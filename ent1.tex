@@ -1,0 +1,190 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{etoolbox}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\lra}{\Leftrightarrow}
+\renewcommand{\div}{\mid}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{consequense}{Следствие}
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{statement}{Утверждение}[section]
+\newtheorem*{comment}{Замечание}
+\newtheorem*{axiom}{Аксиома}
+\newtheorem*{def20}{Определение 2.0}
+\newtheorem*{algorithm}{Алгоритм}
+\newtheorem*{introduction}{Введение}
+
+\renewcommand{\emptyset}{\varnothing}
+
+\usepackage{titlesec}
+\titleformat{\section}{\LARGE \bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\Large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\large\bfseries}{\thesubsubsection}{1em}{}
+
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{linkcolor}{HTML}{225ae2}
+\definecolor{urlcolor}{HTML}{225ae2}
+\hypersetup{
+    pdfstartview=FitH, 
+    linkcolor=linkcolor,
+    urlcolor=urlcolor,
+    colorlinks=true
+}
+
+\title{\textbf{Элементы теории чисел. Первый семестр, Королев Максим Александрович}}
+\author{Кирилл Яковлев, группа 108}
+
+\begin{document}
+    \fontsize{14pt}{20pt}\selectfont
+    \maketitle
+    \newpage
+    \tableofcontents
+    \fontsize{14pt}{20pt}\selectfont
+    \newpage
+    \begin{introduction}
+        Следующие понятия считаются интуитивно ясными:
+    \end{introduction}
+    \begin{enumerate}
+        \item Понятие натурального ряда $\mathbb{N} = \{1, 2, 3, 4, 5, \dots\}$.
+        \item У каждого натурального числа $n$ существует единственное натуральное число $m=n+1$ следующее за ним. 
+        \item Понятие отрицательных чисел и нуля.
+        \item Понятие суммы, разности и произведения двух целых чисел.
+    \end{enumerate}
+    \begin{axiom}
+        Если $M \subset \mathbb{N}$ обладает следующими свойствами: $(1 \in M)$ и $(\forall n\in M$ выполнено $n+1 \in M)$, то $M = \mathbb{N}$.
+    \end{axiom}
+    \begin{consequense}
+        Всякое непустое подмножество натурального ряда содержит минимальный элемент.
+    \end{consequense}
+    \begin{consequense}
+        Всякое непустое конечное подмножество натурального ряда содержит максимальный элемент.
+    \end{consequense}
+    \begin{consequense} (Принцип математической индукции)\newline
+        Если известно, что некоторое утверждение о натуральных числах выполнено для натурального числа $a$, а также из предположения о том, что утверждение верно при некотором $n$ следует справедливость этого утверждения и для числа $n+1$, то это утверждение верно для всех натуральных чисел, больше или равных $a$.
+    \end{consequense}
+    \section{Делимость целых чисел}
+    \begin{definition}
+        Пусть $a,b\in \mathbb{N}, b\ne 0$. Говорят что $a$ делится на $b$, если существует $c\in \mathbb{Z}$, такое, что $a=bc$.
+    \end{definition}
+    \begin{comment}
+        $a$ называется делимым, а $b$ называется делителем числа $a$. Запись $b \mid a$ означает, что $b$ делит $a$. Если $b$ не делит $a$, то пишут $b\nmid a$.
+    \end{comment}
+    \begin{lemma}
+        Пусть $a,b,c \in \mathbb{Z}$, тогда:
+        \begin{enumerate}
+            \item $1 \mid a$.
+            \item $a\ne 0 \Rightarrow a\mid a$.
+            \item $a\mid b \Rightarrow a\mid bc$.
+            \item $a\mid b$ и $b\mid c \Rightarrow a\mid c$.
+            \item $a\mid b$ и $a\mid c \Rightarrow a\mid (b+c)$.
+            \item $a\mid b$ и $b\ne 0 \Rightarrow |a|\leq|b|$.
+        \end{enumerate}
+    \end{lemma}
+    \begin{theorem}
+        Если $a\in \mathbb{Z}, b\in \mathbb{N}$, то  единственная пара целых чисел $q$ и $r$, такие, что $a=bq+r$, где $0\leq r\leq b-1$. 
+    \end{theorem}
+    \begin{proof}
+        Докажем существование: Если $a$ делится на $b$, то $a=bc$. В таком случае возьмем $q=c, r=0$. Теперь пусть $a$ не делится на $b$. Рассмотрим непустое множество $M$ целых чисел, представимых в виде $a=kb, k\in \mathbb{Z}$, возьмем $k=-(|a|+1)$, тогда $a-kb=b(|a|+1)+a\geq b(|a|+1)-|a|\geq 1\cdot (|a|+1)-|a|=1 \Rightarrow a-kb$ - натуральное. Значит у $M$ есть минимальный элемент $a-kb$. Возьмем $q=k, r=a-kb=a-bq > 1$. Осталось показать, что $0\leq r\leq b-1$. Предположим, что $r\geq b$. Если $r=b$, то $a=bq+b=b(q+1)$ получаем противоречие, так как $a$ не делится на $b$. Значит $r=b+m, m\geq 1$. Получаем $1\leq m=r-b<r$, при этом $a=bq+r=bq+b+m=b(q+1)+m \Rightarrow m=a-b(q+1) \Rightarrow m\in M$ и $m<r$, получаем противоречие, так как $a$ не делится на $b$. Доказано, что $r<b \Rightarrow$ представление $a=bq+r$ - искомое. Докажем единственность: предположим, что для некоторого $a$ и $b$ имеются пары чисел с указаным свойством: $q,r$ и $q_1,r_1$, причем $0\leq r\leq r_1 \leq b-1$. Тогда $a=bq+r=bq_1+r_1\Rightarrow 0\leq b(q-q_1)=r_1-r$. Значит $b$ делит разность $r_1-r$. Допустим, что $q\ne q_1$, тогда по пункту 6 леммы 1 получаем $b\leq r_1-r$ и в то же время $r_1-r\leq b-1<b$. Получаем противоречие, значит $q=q_1$, а значит и $r=r_1$.
+    \end{proof}
+    \section{Наименьшее общее кратное и наибольший общий делитель (НОК и НОД)}
+    \begin{def20}
+         $n\geq 2, a_1, \dots, a_n \in \mathbb{N}$ пусть натуральное число $k$ делится на каждое из этих чисел. Тогда $k$ - общее кратное чисел $a_1, \dots, a_n$. \\
+        Пусть $a_1, \dots, a_n$ - целые числа не все равные нулю. Натуральное число $d$ называется общим делителем $a_1, \dots, a_n$, если $d$ делит каждое из этих чисел.
+    \end{def20}
+    \begin{comment}
+        Множество таких $k$ непусто, в нем лежит, например произведение всех этих чисел. \\ Множество таких $d$ конечно: если $a_i\ne 0$, то $d$ находится среди делителей числа $a_i$, (по пункту 6 леммы 1.1) $d\leq |a_i|$, значит числа $d$ образуют конечное множество, оно непусто, так как содержит единицу.
+    \end{comment}
+    \begin{definition}
+        Наименьшее натуральное число, делящееся на каждое из чисел $a_1, \dots, a_n$ называют их наименьшим общим кратным, его обозначают $[a_1, \dots, a_n]$.
+    \end{definition}
+    \begin{theorem}
+        Каждое общее кратное натуральных чисел $a_1, \dots, a_n$ делится на их НОК.
+    \end{theorem}
+    \begin{proof}
+        Пусть $M$ - общее кратное $a_1, \dots, a_n$, $K=[a_1, \dots, a_n]$. Поделим $M$ на $K$ с остатком: $M=kq+r, 0\leq r\leq k-1\leq k$. Допустим, что $K\ne 0$. По определению, всякое число $a_i$ делит оба числа $M$ и $K \Rightarrow a_i$ делит разность $k=M-qK$, значит $k$ является общим кратным для $a_1, \dots, a_n$, но $k<K$, получаем противоречие т.к какое-то кратное оказалось меньше минимального. Значит $k=0$ и $M=qK$.  
+    \end{proof}
+    \begin{definition}
+        Наибольшее из натуральных чисел $d$ делящих каждое из чисел $a_1, \dots, a_n$, называют наибольшим общим делителем $a_1, \dots, a_n$, его обозначают $(a_1, \dots, a_n)$.
+    \end{definition}
+    \begin{definition}
+        Числа $a$ и $b$ называется взаимнопростыми, если $(a,b)=1$. Числа $a_1, \dots, a_n$ называются взаимнопростыми в совокупности, если $(a_1, \dots, a_n)=1$. Числа $a_1, \dots, a_n$ попарно взаимнопросты, если $(a_i,a_j)=1$ $\forall i,j: 1\leq i<j\leq n$.
+    \end{definition}
+    \begin{theorem}
+        $[a,b]\cdot (a,b)=ab, \forall a,b \in \mathbb{N}$.
+    \end{theorem}
+    \begin{proof}
+        $ab$ - общее кратное $a$ и $b$. По теореме 2.1 $ab$ делится на $[a,b]$, то есть $ab=c[a,b]$, где $c\geq 1$ - натуральное число. Покажем, что $a$ и $b$ делятся на $c$. Действительно $a=\frac{ab}{[a,b]}\cdot \frac{[a,b]}{b}=c\cdot \frac{[a,b]}{b}$, $b=\frac{ab}{[a,b]}\cdot \frac{[a,b]}{a}=c\cdot \frac{[a,b]}{a}$, но оба числа $\frac{[a,b]}{a}$ и $\frac{[a,b]}{b}$ - натуральные, значит $c$ - общий делитель $a$ и $b$. Пусть теперь $d$ - произвольный общий делитель $a$ и $b$, тогда $\frac{ab}{d}=a\cdot \frac{b}{d}$, то есть число $\frac{ab}{d}$ делится нацело на каждое из чисел $a$ и $b$. По теореме 2.1, оно делится на $[a,b]$, то есть $\frac{ab}{d}=[a,b]m, $ где $ m\geq 1$ - натуральное число, но тогда $\frac{ab}{[a,b]}=c=dm$, то есть $d$ делит $c$. В силу пункта 6 леммы 1 $d\leq c$, значит $c=(a,b)$.
+    \end{proof}
+    \begin{theorem}
+        Пусть $a,b,c \in \mathbb{N}$, причем $a \mid bc$ и $(a,b)=1$, тогда $a \mid c$. 
+    \end{theorem}
+    \begin{proof}
+        $(a,b)=1 \Rightarrow$ (по теореме 2.2) $bc$ делится нацело на $[a,b]=ab$, то есть $bc=abm$, где $m\geq 1$ - натуральное число. Сократим обе части на $b$, получим $c=am$. 
+    \end{proof}
+    \begin{theorem}
+        Пусть $\Delta=(a,b)\geq 1 \Rightarrow (\frac{a}{\Delta}, \frac{b}{\Delta})=1$.
+    \end{theorem} 
+    \begin{proof}
+        Пусть $m\in \N$ и $m \mid \frac{a}{\Delta}, m \mid \frac{b}{\Delta}$ предположим, что $m > 1 \Rightarrow cm=\frac{a}{\Delta},dm=\frac{b}{\Delta}\Rightarrow \Delta cm=a, \Delta dm=b \Rightarrow \Delta m \mid a$ и $\Delta m\mid b\Rightarrow \Delta m$ - общий делитель $a$ и $b$. Но т.к $m>1$, то $\Delta m>\Delta \Rightarrow \Delta=(a,b) \leq \Delta m$ - противоречие, поскольку $\Delta$ - НОД $\Rightarrow m=1\Rightarrow (\frac{a}{\Delta}, \frac{b}{\Delta})=1$.
+    \end{proof} 
+    \section{Алгоритм Евклида}
+    \begin{lemma}
+        Пусть $a\in \Z, b\in \N$ и $b \mid a$. Тогда $(a,b)=b$.
+    \end{lemma}
+    \begin{proof}
+        Пусть $(a,b)=c\Rightarrow c\mid b \Rightarrow$ (по лемме 1.1) $c\leq b$, но $b\mid a,\\ b\mid b\Rightarrow b$ - общий делитель $a$ и $b\Rightarrow b\leq c\Rightarrow b=c=(a,b)$.
+    \end{proof} 
+    \begin{lemma}
+        Пусть $a\in \Z, b\in \N, a=bq+r: r,q\in \Z, r\geq 0$. Тогда $(a,b)=(b,r)$. 
+    \end{lemma} 
+    \begin{proof}
+        Пусть $\Delta=(a,b), \delta=(b,r)$. Имеем $\delta \div b \Rightarrow b\div bq, b\div r\Rightarrow$ (лемма 1.1) $\delta \div bq+r=a\Rightarrow \delta \div a,\delta \div b\Rightarrow \delta$ - общий делитель $a$ и $b \Rightarrow \delta\leq \Delta$. \\ $\Delta \div b, \Delta \div bq, \Delta \div a\Rightarrow$ (лемма 1.1) $\Delta \div a-bq=r\Rightarrow \Delta$ - общий делитель $b$ и $r\Rightarrow \Delta \leq \delta \Rightarrow \Delta = \delta$.
+    \end{proof} 
+    \begin{algorithm}
+        Получаем, что при поиске НОД $a$ и $b, (a,b)$ можно заменять любой парой $(b,r)=(b,a-bq), q\in \Z$. Положим $r_0=a, r_1=b$. \\ 
+        Выполняем деление с остатком:\\
+        $r_0=r_1q_1+r_2, 0<r_2<r_1\Rightarrow (r_0, r_1)=(r_1,r_2)$,\\
+        $r_1=r_2q_2+r_3, 0<r_3<r_2\Rightarrow (r_1, r_2)=(r_2,r_3)$,\\
+        $r_2=r_3q_3+r_4, 0<r_4<r_3\Rightarrow (r_2, r_3)=(r_3,r_4)$,\\
+        \vdots \\
+        $r_{n-2}=r_{n-1}q_{n-1}+r_n, 0<r_n<r_{n-1}\Rightarrow (r_{n-2}, r_{n-1})=(r_{n-1},r_n)$, \\
+        $r_{n-1}=r_nq_n \Rightarrow$ (лемма 3.1) $(r_{n-1},r_n)=r_n\Rightarrow (a,b)=r_n$.
+    \end{algorithm}
+    \section{Решение в целых числах линейного уравнения с двумя неизвестными}
+    Рассмотрим уравнение ($*$) $ax+by=c$, такое, что $a,b,c\in \Z, a$ и $b$ не равняются нулю одновременно. $x,y\in \Z$ - неизвестные.
+    \begin{theorem}
+        $(1)$ Уравнение $(*)$ разрешимо $\lra \Delta = (a,b) \div c$.\\
+        $(2)$ В случае разрешимости, множество решений этого уравнения бесконечно, все решения имеют вид $x=x_0+\frac{b}{\Delta}t, y=y_0-\frac{a}{\Delta}t$, где $x_0,y_0$ - произвольное решение, а $t\in \Z$.
+    \end{theorem} 
+    \begin{proof}
+        Докажем первый пункт:
+        \begin{itemize}
+            \item[$(\Rightarrow)$] Если $x,y$ - решение, то $\Delta \div ax, \Delta \div by\Rightarrow$ (лемма 1.1) $\Delta \div ax+by\Rightarrow \Delta \div c$.
+            \item[$(\Leftarrow)$] Не теряя общности, можем считать, что $a\geq b\geq 0$. Доказываем индукцией по сумме $a+b$. \\
+            База: $a+b=1\Rightarrow b=0$ и $a=1 \Rightarrow$ уравнение имеет вид $ax=c\Rightarrow x=c$. Можем предъявить решение $x=c, y=0$. В этом случае $\Delta = (1,0) \div 1$. \\
+            Шаг: $n\geq 1$, считаем, что утверждение доказано для всех уравнений с условием $a\geq b\geq 0$, $1\leq a+b\leq n$. Пусть $ax+by=c$, где $a\geq b\geq 0,\\ a+b=n+1$ и $\Delta = (a,b) \div c \Rightarrow$ докажем, что есть хотя бы одно решение. Пусть $b=0, ax=c, \Delta = (a,0)=a, a\div c\Rightarrow c=am\Rightarrow x=m, y=0$ - решение. Пусть $b\geq 1$. Рассмотрим уравнение $(a-b)X+bY=c,\\ a-b\geq 0, b\geq 1 >0$. $(a-b)+b=(a+b)-b=n+1-b\leq n$. $(a-b, b)=(a,b) \div c\\ \Rightarrow$ по предположению индукции есть целочисленное решение $X_0,X_0$. \\ $(a-b)X_0+bY_0=c\Rightarrow aX_0-b(Y_0-X_0)\Rightarrow x=X_0, y=Y_0-X_0$ - решение.\\
+            Докажем второй пункт (проверим, что $x_0,y_0$ - решение):\\
+            $a(x_0+\frac{b}{\Delta}t)+b(y_0-\frac{a}{\Delta}t)=ax_0+\frac{ab}{\Delta}t+ay_0-\frac{ab}{\Delta}t=ax_0+by_0$. Обратно: пусть $x_0,y_0$ и $x,y$ - различные решения. $ax_0+by_0=c, ax+by=c \Rightarrow a(x-x_0)+b(y-y_0)=0\Rightarrow a(x-x_0)=b(y_0-y)$. $\Delta = (a,b)\Rightarrow a=\alpha\Delta, b=\beta\Delta\Rightarrow$ (теорема 2.4) $(\alpha,\beta)=1\Rightarrow \alpha\Delta(x-x_0)=\beta\Delta(y_0-y)\Rightarrow \alpha(x-x_0)=\beta(y_0-y) \\ \Rightarrow \alpha \div \beta(y_0-y)\Rightarrow \alpha \div (y_0-y)\Rightarrow y_0-y=\alpha t\Rightarrow \alpha (x-x_0)=\beta \alpha t \Rightarrow x-x_0=\beta t$.
+        \end{itemize}
+    \end{proof} 
+\end{document}    
