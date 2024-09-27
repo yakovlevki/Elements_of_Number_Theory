@@ -25,10 +25,13 @@
 \newcommand{\om}{\bar{\bar{o}}}
 \newcommand\tab[1][.5cm]{\hspace*{#1}}
 
+\newcounter{concount}
+
 \theoremstyle{definition}
 \newtheorem{definition}{Определение}[section]
 \newtheorem{theorem}{Теорема}[section]
-\newtheorem{consequense}{Следствие}
+\newtheorem{consequense}[concount]{Следствие}
+\newtheorem*{cons}{Следствие}
 \newtheorem{lemma}{Лемма}[section]
 \newtheorem{statement}{Утверждение}[section]
 \newtheorem*{comm}{Замечание}
@@ -131,7 +134,7 @@
         Наибольшее из натуральных чисел $d$ делящих каждое из чисел $a_1, \dots, a_n$, называют наибольшим общим делителем $a_1, \dots, a_n$, его обозначают $(a_1, \dots, a_n)$.
     \end{definition}
     \begin{definition}
-        Числа $a$ и $b$ называется взаимнопростыми, если $(a,b)=1$. Числа $a_1, \dots, a_n$ называются взаимнопростыми в совокупности, если \\ $(a_1, \dots, a_n)=1$. Числа $a_1, \dots, a_n$ попарно взаимнопросты, если $(a_i,a_j)=1$ $\forall i,j: 1\leq i<j\leq n$.
+        Числа $a$ и $b$ называется взаимно простыми, если $(a,b)=1$. Числа $a_1, \dots, a_n$ называются взаимно простыми в совокупности, если \\ $(a_1, \dots, a_n)=1$. Числа $a_1, \dots, a_n$ попарно взаимно просты, если $(a_i,a_j)=1$ $\forall i,j: 1\leq i<j\leq n$.
     \end{definition}
     \begin{theorem} \label{th2.2}
         $[a,b]\cdot (a,b)=ab, \forall a,b \in \mathbb{N}$.
@@ -250,5 +253,96 @@
             0, \hspace{5pt} $если $p\ndiv n,\\
             \alpha, \hspace{5pt} $если$ p=p_i. 
         \end{cases}$$
-    \end{definition}                                                              
+    \end{definition}    
+    \begin{lemma} (Свойства $\nu_p(n)$) \label{lemma5.3}
+        \begin{enumerate}
+            \item Для любых целых чисел $a,b>1$ и любого простого $p$ справедливо равенство: $\nu_p(ab)=\nu_p(a)+\nu_p(b)$.
+            \item Пусть $m,n>1$ - целые числа, тогда $m \div n \lra \nu_p(m)\leq \nu_p(n)$ для любого простого $p$.
+        \end{enumerate}
+    \end{lemma}
+    \begin{proof} \tab
+        \begin{enumerate}
+            \item При перемножении степеней с одинаковыми основаниями, их показатели складываются.
+            \item    
+            \begin{itemize}
+                \item[$(\Rightarrow)$] Пусть $n=km \Rightarrow \nu_p(n)=\nu_p(k)+\nu_p(m)\geq \nu_p(m)$.
+                \item[$(\Leftarrow)$] Все разности $\nu_p(n)-\nu_p(m)$ - целые неотрицательные. Рассмотрим число:
+                $$k = \prod\limits_pp^{\nu_p(n)-\nu_p(m)}$$ 
+                Если $k=1$, то $\nu_p(n)=\nu_p(m)$ для всех $p$ и $m=n$. В силу основной теоремы арифметики, в этом случае $m \div n$. Пусть $k>1$, тогда в силу пункта 1:
+                $$km=\prod\limits_pp^{\nu_p(n)-\nu_p(m)}\cdot \prod\limits_pp^{\nu_p(m)}=\prod\limits_pp^{\nu_p(n)}=n$$
+                то есть $m \div n$. 
+            \end{itemize}
+        \end{enumerate}
+    \end{proof}
+    \begin{theorem} (В сбитой номерации М.А. Королева это теорема 5.4)\label{th5.3}\\
+        Для любых $a,b\in \N$ справедливы равенства:
+        $$[a,b]=\prod\limits_pp^{\max(\nu_p(a),\nu_p(b))}$$
+        $$(a,b)=\prod\limits_pp^{\min(\nu_p(a),\nu_p(b))}$$
+    \end{theorem}
+    \begin{proof}
+        Обозначим $K=[a,b],$ $N=\prod\limits_pp^{\max(\nu_p(a),\nu_p(b))}$ поскольку\\ $\nu_p(a)\leq \nu_p(N),$ $\nu_p(b)\leq \nu_p(N)$, то $a$ и $b$ делят $N$ в силу леммы \ref{lemma5.3}. Значит $N$ - общее кратное чисел $a$ и $b$. С другой стороны, поскольку $a$ и $b$ делят $K$, то по лемме \ref{lemma5.3} имеем $\nu_p(a),\nu_p(b)\leq \nu_p(K)$, так что $\nu_p(K)\geq \max(\nu_p(a), \nu_p(b))=\nu_p(N)$ для любого простого $p$. Значит, $N\div K$, но $N\leq K \Rightarrow N=K$. Вторая часть утверждения следует из первой, если воспользоваться равенством
+        $$(a,b)=\frac{ab}{[a,b]}$$
+        и тем, что $x+y=\max(x,y)+\min(x,y)$ $\forall x,y\in \R$.
+    \end{proof}
+    \section{Мультипликативные функции}
+    \begin{definition}
+        Функция $f$, определенная на множестве $\N$ называется мультипликативной, если для любых взаимно простых $a,b\in \N$ выполнено равенство:
+        $$f(ab)=f(a)f(b)$$
+    \end{definition}
+    \begin{theorem}(Простейшие свойтсва мультипликативных функций) \label{th6.1}\\
+        Пусть $f,g$ - мультипликативные функции. Тогда:
+        \begin{enumerate}
+            \item Если $f\not\equiv 0$, то $f(1)=1$.
+            \item Если $n=p_1^{\alpha_1}\dots p_r^{\alpha_r}$ - каноническое разложение $n$, то $f(n)=f(p_1^{\alpha_1})\dots f(p_r^{\alpha_r})$.
+            \item Функция $h$, определенная для любого $n\in \N$ равенством\\ $h(n)=f(n)g(n)$ - мультипликативна. 
+        \end{enumerate}
+        \begin{proof}
+            Так как $f\not\equiv 0$, то $\exists a\in \N: f(a)\ne 0$. Тогда\\ $f(a)=f(a\cdot 1)=f(a)f(1) \Rightarrow f(1)=1$.
+        \end{proof}
+    \end{theorem}
+    Для исседование дальнейших свойств мультипликативных функций потребуется несколько вспомогательных лемм
+    \begin{lemma} \label{lemma6.1}
+        Пусть $r\geq 2$ и пусть целые числа $a_1,\dots, a_r$ попарно взаимно просты. Тогда найдется номер $1\leq \xi\leq r$ такой, что $p\div a_\xi$.
+    \end{lemma} 
+    \begin{proof}
+        Индукция по $\xi$. Если $r=2$, то это есть очевидно следствие теоремы \ref{th2.3}. Пусть $m\geq 3$ и утверждение доказано для всех $r\leq m-1$. Пусть $a_1,\dots a_m$ попарно взаимно просты и $p \div a_1\cdot...\cdot a_m$. Полагая $a=a_1\cdot ... \cdot a_{m-1}$ будем иметь: $p \div aa_m$. Если $(p,a)=1$, то $p\div a_m$ по теореме \ref{th2.3}. Пусть $(p,a)>1$. Так как $p$ - простое, то $(p,a)=p$ и $p$ делит некоторый сомножитель $a_{\xi}: 1\geq\xi\geq m-1$.
+    \end{proof} 
+    \begin{lemma} \label{lemma6.2}
+        Пусть $b\div a,$ $c\div a$, причем $(b,c)=1$. Тогда $bc\div a$.
+    \end{lemma}
+    \begin{proof}
+        Из условия следует, что $a$ - общее кратное $b$ и $c$. По теореме \ref{th2.1} $a$ делится на $[b,c]$, по теореме \ref{th2.2} $[b,c]=bc$.
+    \end{proof}
+    \begin{cons}
+        Пусть $r\geq 2$, и пусть целые числа $b_1\dots b_r$ попарно взаимно просты, причем $b_1 \div a, \dots, b_r \div a$. Тогда $b_1\dots b_r \div a$.
+    \end{cons} 
+    \begin{proof}
+        Индукция по $r$. Если $r=2$, получаем утверждение леммы. Пусть $m\geq 3$ и утверждение доказано для всех $r\leq m-1$. Пусть $b_1, \dots b_m$ попарно взаимно просты и каждое из них делит $a$. В силу предложения индукции, $a$ делится на произведение $b_1\dots b_{m-1}$. Заметим, что $(b,b_m)=1$. Действительно, в противном случае найдется простое число $p$, делящееся как на $b_m$ так и на $b$. По лемме \ref{lemma6.1} $p$ будет делить и некоторые $b_{\xi}: 1\geq \xi \geq m-1$. Следовательно $(b_m,b_{\xi})\geq p>1$, что противоречит условию. Так как $a$ делится на $b$ и $b_m$, и $(b, b_m)=1$, то в силу леммы \ref{lemma6.2} $a$ делится на $bb_m=b_1\dots b_m$.
+    \end{proof}
+    \begin{lemma} \label{lemma6.3}
+        Пусть числа $a$ и $b$ взаимно просты, и пусть $d_1$ и $d_2$ пробегают соответственно множества всех делителей $a$ и $b$. Тогда величина $d=d_1d_2$ пробегает без повторений все множество делителей числа $ab$.
+    \end{lemma} 
+    \begin{proof} \tab
+        \begin{enumerate}
+            \item Если $d_1 \div a,$ $d_2 \div b$, то $a=kd_1,$ $b=md_2$ при некоторых $k,m\in \Z$, так что $ab=kmd_1d_2$, то есть $d_1d_2$ - делитель $ab$.
+            \item Допустим, что $d_1d_2=\delta_1\delta_2$ для некоторых чисел $d_1, \delta_1$ делящих $a$ и некоторых чисел $d_2, \delta_2$, делящих $b$. Очевидно, что $(d_1,\delta_2)=1$, так как в противном случае нашлось бы простое $p$, делящееся одновременно и $a$ и $b$, что невозможно. Но $d_1 \div \delta_1\delta_2$ по теореме \ref{th2.3} $d_1 \div \delta_1$ и, следовательно $d_1\leq \delta_1$. Аналогично доказывается, что $\delta_1\div d_1$ и $\delta_1\leq d_1$. Значит $d_1=\delta_1, d_2=\delta_2$, то есть все произведения $d_1$ и $d_2$ различны.
+            \item Докажем, наконец, что всякий делитель $d$ числа $ab$ встретится среди произведений $d_1d_2$. Если $d=1$, то это очевидно. Пусть $d\geq 2$ и $p_1^{\alpha_1}\dots p_r^{\alpha_r}$ - каноническое разложение $d$. Число $q_1=p_1^{\alpha_1} \div ab$. Из теоремы \ref{th2.3} следует, что $q_1$ делит либо $a$, либо $b$ (но не оба сразу). То же верно и дял чисел $q_{\xi}=p_{\xi}^{\alpha_{\xi}}, \xi=2,3,\dots,r$. Пусть, для определенности, $q_1,\dots, q_t$ - все сомножители, делящие $a$, и $q_{t+1},\dots, q_r$ - все сомножители, делящие $b$. По следствию леммы \ref{lemma6.2} произведение $d_1=q_1\dots q_t$ делит $a$, произведение $d_2=q_{t+1},\dots, q_r$ делит $b$, но $d_1d_2=d$.
+        \end{enumerate}
+    \end{proof}
+    \begin{theorem}
+        Пусть функция $f$ мультипликативна. Тогда функция $F$, определенная при любом $n\in \N$ равенством:
+        $$F(n)=\sum\limits_{d\div n}f(d)$$
+        мультипликативна.
+    \end{theorem}
+    \begin{proof}
+        Пусть $(a,b)=1$. По лемме \ref{lemma6.3}, все делители $ab$ получим без повторений, рассмотрев все произведения $d=d_1d_2$, где $d_1 \div a$, $d_2 \div b$. Значит
+        $$F(ab)=\sum\limits_{d\div ab}f(d)=\sum\limits_{d_1 \div a}\sum\limits_{d_2 \div b}f(d_1d_2)=\sum\limits_{d_1 \div a}\sum\limits_{d_2 \div b}f(d_1)f(d_2)=$$
+        $$=(\sum\limits_{d_1 \div a}f(d_1))(\sum\limits_{d_2 \div b}f(d_2))=F(a)F(b).$$
+        Взаимная простота $d_1$ и $d_2$ очевидна.
+    \end{proof} 
+    \begin{cons}
+        Если $p_1^{\alpha_1}\dots p_r^{\alpha_r}$ - каноническое разложение $n$, а $F$ - функция из условия теоремы, то
+        $$F(n)=\prod\limits_{i=1}^{r}(1+f(p_i)+f(p_i^2)+\dots +f(p_i^{\alpha_i}))$$
+        (при условии что $f\not\equiv 0$).
+    \end{cons} 
 \end{document}
