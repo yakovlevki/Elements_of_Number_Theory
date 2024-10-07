@@ -25,13 +25,11 @@
 \newcommand{\om}{\bar{\bar{o}}}
 \newcommand\tab[1][.5cm]{\hspace*{#1}}
 
-\newcounter{concount}
-
 \theoremstyle{definition}
 \newtheorem{definition}{Определение}[section]
 \newtheorem{theorem}{Теорема}[section]
-\newtheorem{consequense}[concount]{Следствие}
-\newtheorem*{cons}{Следствие}
+\newtheorem*{consequense}{Следствие}
+\newtheorem{cons}{Следствие}
 \newtheorem{lemma}{Лемма}[section]
 \newtheorem{statement}{Утверждение}[section]
 \newtheorem*{comm}{Замечание}
@@ -40,6 +38,7 @@
 \newtheorem*{algorithm}{Алгоритм}
 \newtheorem*{introduction}{Введение}
 \newtheorem*{eratosphene}{Решето Эратосфена}
+\newtheorem*{example}{Примеры}
 
 \usepackage{titlesec}
 \titleformat{\section}{\LARGE \bfseries}{\thesection}{1em}{}
@@ -59,11 +58,18 @@
 
 \title{\textbf{Элементы теории чисел}}
 \author{Лектор: Королев Максим Александрович}
-\date{Конспект: Кирилл Яковлев, 108 группа, tg: @fourkenz}
 
 \begin{document}
     \fontsize{14pt}{20pt}\selectfont
     \maketitle
+    \vspace{1cm}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{mehmat.png}
+    \end{center}
+    \vspace{1.5cm}
+    \begin{center}
+        Конспект: Кирилл Яковлев, 108 группа \tab[5.5cm] tg: @fourkenz
+    \end{center}
     \newpage
     \tableofcontents
     \fontsize{14pt}{20pt}\selectfont
@@ -80,15 +86,15 @@
     \begin{axiom}
         Если $M \subset \mathbb{N}$ обладает следующими свойствами: $(1 \in M)$ и $(\forall n\in M$ выполнено $n+1 \in M)$, то $M = \mathbb{N}$.
     \end{axiom}
-    \begin{consequense}
+    \begin{cons}
         Всякое непустое подмножество натурального ряда содержит минимальный элемент.
-    \end{consequense}
-    \begin{consequense}
+    \end{cons}
+    \begin{cons}
         Всякое непустое конечное подмножество натурального ряда содержит максимальный элемент.
-    \end{consequense}
-    \begin{consequense} (Принцип математической индукции)\newline
+    \end{cons}
+    \begin{cons} (Принцип математической индукции)\newline
         Если известно, что некоторое утверждение о натуральных числах выполнено для натурального числа $a$, а также из предположения о том, что утверждение верно при некотором $n$ следует справедливость этого утверждения и для числа $n+1$, то это утверждение верно для всех натуральных чисел, больше или равных $a$.
-    \end{consequense}
+    \end{cons}
     \section{Делимость целых чисел}
     \begin{definition}
         Пусть $a,b\in \mathbb{N}, b\ne 0$. Говорят что $a$ делится на $b$, если существует $c\in \mathbb{Z}$, такое, что $a=bc$.
@@ -285,6 +291,11 @@
         и тем, что $x+y=\max(x,y)+\min(x,y)$ $\forall x,y\in \R$.
     \end{proof}
     \section{Мультипликативные функции}
+    Обозначения и пояснения:
+    \begin{enumerate}
+        \item Обозначение $\sum\limits_{d\div n}f(d)$ - сумма значений функции $f$ по всем делиителям $d$ числа $n$.
+        \item Двойная сумма вычисляется следующим образом: \[\sum\limits_{m=1}^M\sum\limits_{n=1}^Ng(mn)=\sum\limits_{n=1}^Ng(1,n)+\sum\limits_{n=1}^Ng(2,n)+\dots +\sum\limits_{n=1}^Ng(M,n)\]
+    \end{enumerate}
     \begin{definition}
         Функция $f$, определенная на множестве $\N$ называется мультипликативной, если для любых взаимно простых $a,b\in \N$ выполнено равенство:
         $$f(ab)=f(a)f(b)$$
@@ -313,9 +324,9 @@
     \begin{proof}
         Из условия следует, что $a$ - общее кратное $b$ и $c$. По теореме \ref{th2.1} $a$ делится на $[b,c]$, по теореме \ref{th2.2} $[b,c]=bc$.
     \end{proof}
-    \begin{cons}
+    \begin{consequense}
         Пусть $r\geq 2$, и пусть целые числа $b_1\dots b_r$ попарно взаимно просты, причем $b_1 \div a, \dots, b_r \div a$. Тогда $b_1\dots b_r \div a$.
-    \end{cons} 
+    \end{consequense} 
     \begin{proof}
         Индукция по $r$. Если $r=2$, получаем утверждение леммы. Пусть $m\geq 3$ и утверждение доказано для всех $r\leq m-1$. Пусть $b_1, \dots b_m$ попарно взаимно просты и каждое из них делит $a$. В силу предложения индукции, $a$ делится на произведение $b_1\dots b_{m-1}$. Заметим, что $(b,b_m)=1$. Действительно, в противном случае найдется простое число $p$, делящееся как на $b_m$ так и на $b$. По лемме \ref{lemma6.1} $p$ будет делить и некоторые $b_{\xi}: 1\geq \xi \geq m-1$. Следовательно $(b_m,b_{\xi})\geq p>1$, что противоречит условию. Так как $a$ делится на $b$ и $b_m$, и $(b, b_m)=1$, то в силу леммы \ref{lemma6.2} $a$ делится на $bb_m=b_1\dots b_m$.
     \end{proof}
@@ -329,7 +340,7 @@
             \item Докажем, наконец, что всякий делитель $d$ числа $ab$ встретится среди произведений $d_1d_2$. Если $d=1$, то это очевидно. Пусть $d\geq 2$ и $p_1^{\alpha_1}\dots p_r^{\alpha_r}$ - каноническое разложение $d$. Число $q_1=p_1^{\alpha_1} \div ab$. Из теоремы \ref{th2.3} следует, что $q_1$ делит либо $a$, либо $b$ (но не оба сразу). То же верно и для чисел $q_{\xi}=p_{\xi}^{\alpha_{\xi}}, \xi=2,3,\dots,r$. Пусть, для определенности, $q_1,\dots, q_t$ - все сомножители, делящие $a$, и $q_{t+1},\dots, q_r$ - все сомножители, делящие $b$. По следствию леммы \ref{lemma6.2} произведение $d_1=q_1\dots q_t$ делит $a$, произведение $d_2=q_{t+1},\dots, q_r$ делит $b$, но $d_1d_2=d$.
         \end{enumerate}
     \end{proof}
-    \begin{theorem}
+    \begin{theorem} \label{th6.2}
         Пусть функция $f$ мультипликативна. Тогда функция $F$, определенная при любом $n\in \N$ равенством:
         $$F(n)=\sum\limits_{d\div n}f(d)$$
         мультипликативна.
@@ -340,9 +351,110 @@
         $$=(\sum\limits_{d_1 \div a}f(d_1))(\sum\limits_{d_2 \div b}f(d_2))=F(a)F(b).$$
         Взаимная простота $d_1$ и $d_2$ очевидна.
     \end{proof} 
-    \begin{cons}
+    \begin{consequense}
         Если $p_1^{\alpha_1}\dots p_r^{\alpha_r}$ - каноническое разложение $n$, а $F$ - функция из условия теоремы, то
         $$F(n)=\prod\limits_{i=1}^{r}(1+f(p_i)+f(p_i^2)+\dots +f(p_i^{\alpha_i}))$$
         (при условии что $f\not\equiv 0$).
-    \end{cons} 
+    \end{consequense}
+    \begin{definition}
+        Функция Мебиуса $\mu(n)$ определяется равенствами:
+        \[\mu(n)=\begin{cases}
+            1, \hspace{5pt} \text{если} \hspace{5pt} 1,\\
+            0, \hspace{5pt} \text{если} \hspace{5pt} n \hspace{5pt} \text{делится на квадрат простого числа},\\
+            (-1)^k,\hspace{5pt} \text{если} \hspace{5pt} n=p_1\dots p_k - \text{различные простые числа}.
+        \end{cases}\]
+    \end{definition} 
+    Примеры: $\mu(2)=(-1)^1=-1, \mu(3)=-1, \mu(4)=0, \mu(5)=-1, \mu(6)=(-1)^2=1, \mu(7)=-1, \mu(8)=\mu(9)=0, \mu(10)=(-1)^2=1$
+    $n=p_1\dots p_k$, $m=q_1\dots q_r$, $(m,n)=1\Rightarrow mn=p_1\dots p_kq_1\dots q_r \Rightarrow \mu(mn)=(-1)^{k+r}=(-1)^k(-1)^r=\mu(m)\mu(n)$.
+    $p$ - простое $\Rightarrow \mu(p)=-1, \mu(p^2)=0, \mu(p^3)=0, \dots$
+    \begin{theorem}
+        (Основное свойство функции Мебиуса) \label{th6.3}
+        \[\sum\limits_{d\div n}\mu(d)=\begin{cases}
+            1, \hspace{5pt} \text{если} \hspace{5pt} n=1,\\
+            0, \hspace{5pt} \text{если} \hspace{5pt} \text{во всех остальных случаях}.
+        \end{cases}\]
+    \end{theorem} 
+    \begin{proof}
+        Пусть $F(n)=\sum\limits_{d\div n}\mu(d)\Rightarrow$ (По теореме 6.2) $F$ - мультипликативна. Пусть $p$ - простое, $n=p^{\alpha}, \alpha\geq 1 \Rightarrow F(p^{\alpha})=\sum\limits_{d\div p^{\alpha}}\mu(d)=\mu(1)+\mu(p)+\mu(p^2)+\dots +\mu(p^{\alpha})=1-1=0$.
+    \end{proof}
+    \begin{definition}
+        Функция Эйлера $\phi(n)$ определяется для натурального $n$ как количество чисел $m$ с условиями $1\leq m\leq n$, таких, что $(m,n)=1$
+    \end{definition}
+    \begin{example}
+        $\phi(1)=1$, $\phi(2)=1$, $\phi(3)=1+1+0=2$, $\phi(4)=1+0+1+0=2$, $\phi(5)=1+1+1+1+0=4$, $\phi(6)=1+0+0+0+1+0=2$
+    \end{example}
+    \begin{theorem}
+        Функция Эйлера $\phi$ мультипликативна. Кроме того, если $p_1,\dots,p_k$ - все различные делители $n$, тогда:
+        \[\phi(n)=n\prod\limits_{p\div n}(1-\frac{1}{p})=n(1-\frac{1}{p_1})\dots(1-\frac{1}{p_k})\]
+    \end{theorem} 
+    \begin{proof}
+        Надо подсчитать число тех $m$, для которых $(m,n)=1$. По теореме \ref{th6.3}
+        \[\sum\limits_{d\div (m,n)}\mu(d)=\begin{cases}
+            1, \hspace{5pt} \text{если} \hspace{5pt} (m,n)=1,\\
+            0, \hspace{5pt} \text{иначе}.
+        \end{cases}\]
+        \[\Rightarrow \phi(n)=\sum\limits_{1\leq m\leq n}\ \sum\limits_{d\div (m,n)}\mu(d)=\sum_{d\div n}\mu(d)\sum\limits_{d\leq m\leq n, d\div m}1\]
+        \[1\leq m=kd\leq n \Rightarrow 1\leq k\leq \frac{n}{d}\]
+        \[\Rightarrow \sum_{d\div n}\mu(d)\sum\limits_{d\leq m\leq n, d\div m}1 =\sum\limits_{d\div n}\mu(d)\frac{n}{d}=n\sum\limits_{d\div n}\frac{\mu(d)}{d}\] Функции $\mu(d)$ и $\frac{1}{d}$ - мультипликативные $\Rightarrow \frac{\mu(d)}{d}$ - мультипликативна $\Rightarrow$ по теореме \ref{th6.2} $\Rightarrow \sum\limits_{d\div n}\frac{\mu(d)}{d}$ - мультипликативна $\Rightarrow \phi(n)$ - мультипликативна.\\
+        $n=p^{\alpha},\ p$ - простое, $\alpha\geq 1$
+        \begin{multline*}
+            \Rightarrow \phi(p^{\alpha})=p^{\alpha}\sum\limits_{d \div p^{\alpha}}\frac{\mu(d)}{d}=p^{\alpha}(\frac{\mu(1)}{1}+\frac{\mu(p)}{p}+\frac{\mu(p^2)}{p^2}+\dots+\frac{\mu(p^{\alpha})}{p^{\alpha}})=\\
+            =p^{\alpha}(1+\frac{\mu(p)}{p})=p^{\alpha}(1+\frac{1}{p})
+        \end{multline*}.
+        \begin{multline*}
+            n=p_1^{\alpha_1}\dots p_k^{\alpha_k}\Rightarrow \phi(n)=\phi(p_1^{\alpha_1})\dots \phi(p_k^{\alpha_k})=p_1^{\alpha_1}(1-\frac{1}{p_1})\dots p_k^{\alpha_k}(1-\frac{1}{p_k})=\\
+            =p_1^{\alpha_1}\dots p_k^{\alpha_k}(1-\frac{1}{p_1})\dots (1-\frac{1}{p_k})=n\prod\limits_{p\div n}(1-\frac{1}{p}).
+        \end{multline*}
+    \end{proof}
+    \begin{theorem}(Формула обращения Мебиуса)\label{th6.5}
+        Пусть $\forall n\geq 1$ функции $f$ и $g$ связаны соотношением
+        \begin{equation}
+            f(n)=\sum\limits_{d\div n}g(d)
+        \end{equation}
+        Тогда $\forall n\geq 1$ выполнено равенство
+        \begin{equation}
+            g(n)=\sum\limits_{d\div n}\mu(d)f(\frac{n}{d})
+        \end{equation}
+        Обратно, если $\forall n\geq 1$ $f$ и $g$ связаны соотношением $(2)$, то $\forall n\geq 1$ верно $(1)$. 
+    \end{theorem} 
+    \begin{proof}
+        \begin{itemize}
+            \item[$(\Rightarrow)$] Пусть выполнено $(1)$, преобразуем величину
+            \begin{multline*}
+                \sum\limits_{d\div n}\mu(d)f(\frac{n}{d})=\sum\limits_{d\div n}\mu(d)\sum\limits_{\delta\div \frac{n}{d}}g(\delta)=\sum\limits_{d\delta\div n}\mu(d)g(\delta)=\sum\limits_{\delta\div n}g(\delta)\sum\limits_{d\div \frac{n}{\delta}}\mu(d)=\\=(\text{по теореме } \ref{th6.3})\hspace{3pt} g(n).
+            \end{multline*}
+            Пояснение: 
+            \[\sum\limits_{d\div \frac{n}{\delta}}\mu(d)=\begin{cases}
+                1,\ \text{если}\ \frac{n}{\delta}=1,\\
+                0,\ \text{если}\ \frac{n}{\delta}>1.
+            \end{cases}\lra\ \begin{cases}
+                1,\ \text{если}\ n=\delta,\\
+                0,\ \text{если}\ n>\delta.
+            \end{cases}\]
+            \item[$(\Leftarrow)$] Пусть есть (2), преобразуем
+            \[\sum\limits_{d\div n}\mu(d)f(\frac{n}{d})=\sum\limits_{d\div n}\sum\limits_{\delta\div d}\mu(\delta)f(\frac{d}{\delta})=\]
+                \[(\delta\div d \Rightarrow d=\Delta\delta\Rightarrow \frac{d}{\delta}=\Delta)\]
+            \[=\sum\limits_{\Delta\delta\div d}\mu(\delta)f(\Delta)=\sum\limits_{\Delta\div n}f(\Delta)\sum\limits_{\delta\div \frac{n}{\Delta}}\mu(\delta)=\text{(по теореме}\hspace{3pt} \ref{th6.3}) \hspace{3pt} f(n)\]
+        \end{itemize}
+    \end{proof} 
+    \begin{consequense}
+        \[\sum\limits_{d\div n}\phi(n)=n\]
+    \end{consequense}
+    \begin{proof}
+        Выше доказали, что
+        \[\phi(n)=\sum\limits_{d\div n}\mu(d)\frac{n}{d}\]
+        это равенство (2), где $g(n)=\phi(n), f(k)=k$. По формуле обращения Мебиуса, для этих функций выполнено (1): $f(n)=n=\sum\limits_{d\div n}g(n)=\sum\limits_{d\div n}\phi(n)$ 
+    \end{proof} 
+    \begin{definition}
+        Функция делителей $\tau(n)$ определяется, как число делителей натурального $n\geq 1$.
+        \[\tau(n)=\sum\limits_{d\div n}1.\]
+    \end{definition}
+    \begin{comm}
+        $f(1)\equiv 1$ - мультипликативна $\Rightarrow$ (по теореме \ref{th6.2}) $\tau(n)$ - мультипликативна.
+    \end{comm} 
+    \begin{statement}
+        $n=p^{\alpha}, \ p$ - простое.
+        \[\tau(p^{\alpha})=\sum\limits_{d\div p^{\alpha}}1=\alpha+1\]
+        $n=p_1^{\alpha_1}\dots p_k^{\alpha_k}\Rightarrow \tau(n)=(\alpha_1+1)(\alpha_2+1)\dots(\alpha_k+1)$.
+    \end{statement} 
 \end{document}
