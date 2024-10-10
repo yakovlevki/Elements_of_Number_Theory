@@ -38,8 +38,8 @@
 \newtheorem*{algorithm}{Алгоритм}
 \newtheorem*{introduction}{Введение}
 \newtheorem*{eratosphene}{Решето Эратосфена}
-\newtheorem*{example}{Примеры}
-
+\newtheorem*{example}{Пример}
+\newtheorem*{examples}{Примеры}
 \usepackage{titlesec}
 \titleformat{\section}{\LARGE \bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\Large\bfseries}{\thesubsection}{1em}{}
@@ -308,18 +308,21 @@
             \item Функция $h$, определенная для любого $n\in \N$ равенством\\ $h(n)=f(n)g(n)$ - мультипликативна. 
         \end{enumerate}
         \begin{proof}
-            Так как $f\not\equiv 0$, то $\exists a\in \N: f(a)\ne 0$. Тогда\\ $f(a)=f(a\cdot 1)=f(a)f(1) \Rightarrow f(1)=1$.
+            \begin{enumerate}
+            \item Так как $f\not\equiv 0$, то $\exists a\in \N: f(a)\ne 0$. Тогда\\ $f(a)=f(a\cdot 1)=f(a)f(1) \Rightarrow f(1)=1$.
+            \item 3. Напрямую следует из определения.
+            \end{enumerate}
         \end{proof}
     \end{theorem}
     Для исседование дальнейших свойств мультипликативных функций потребуется несколько вспомогательных лемм
     \begin{lemma} \label{lemma6.1}
-        Пусть $r\geq 2$ и пусть целые числа $a_1,\dots, a_r$ попарно взаимно просты. Тогда найдется номер $1\leq s\leq r$ такой, что $p\div a_s$.
+        Пусть $p$ - простое число, $r\geq 2$ и пусть целые числа $a_1,\dots, a_r$ попарно взаимно просты, причем $p \div a_1\dots a_r$. Тогда найдется номер $1\leq s\leq r$ такой, что $p\div a_s$.
     \end{lemma} 
     \begin{proof}
         Индукция по $r$. Если $r=2$, то это есть очевидно следствие теоремы \ref{th2.3}. Пусть $m\geq 3$ и утверждение доказано для всех $r\leq m-1$. Пусть $a_1,\dots a_m$ попарно взаимно просты и $p \div a_1\cdot...\cdot a_m$. Полагая $a=a_1\cdot ... \cdot a_{m-1}$ будем иметь: $p \div aa_m$. Если $(p,a)=1$, то $p\div a_m$ по теореме \ref{th2.3}. Пусть $(p,a)>1$. Так как $p$ - простое, то $(p,a)=p$ и $p$ делит некоторый сомножитель $a_{s}: 1 \geq s \geq m-1$.
     \end{proof} 
     \begin{lemma} \label{lemma6.2}
-        Пусть $b\div a,$ $c\div a$, причем $(b,c)=1$. Тогда $bc\div a$.
+        Пусть $b\div a$ и $c\div a$, причем $(b,c)=1$. Тогда $bc\div a$.
     \end{lemma}
     \begin{proof}
         Из условия следует, что $a$ - общее кратное $b$ и $c$. По теореме \ref{th2.1} $a$ делится на $[b,c]$, по теореме \ref{th2.2} $[b,c]=bc$.
@@ -328,7 +331,7 @@
         Пусть $r\geq 2$, и пусть целые числа $b_1\dots b_r$ попарно взаимно просты, причем $b_1 \div a, \dots, b_r \div a$. Тогда $b_1\dots b_r \div a$.
     \end{consequense} 
     \begin{proof}
-        Индукция по $r$. Если $r=2$, получаем утверждение леммы. Пусть $m\geq 3$ и утверждение доказано для всех $r\leq m-1$. Пусть $b_1, \dots b_m$ попарно взаимно просты и каждое из них делит $a$. В силу предложения индукции, $a$ делится на произведение $b_1\dots b_{m-1}$. Заметим, что $(b,b_m)=1$. Действительно, в противном случае найдется простое число $p$, делящееся как на $b_m$ так и на $b$. По лемме \ref{lemma6.1} $p$ будет делить и некоторые $b_{\xi}: 1\geq \xi \geq m-1$. Следовательно $(b_m,b_{\xi})\geq p>1$, что противоречит условию. Так как $a$ делится на $b$ и $b_m$, и $(b, b_m)=1$, то в силу леммы \ref{lemma6.2} $a$ делится на $bb_m=b_1\dots b_m$.
+        Индукция по $r$. Если $r=2$, получаем утверждение леммы. Пусть $m\geq 3$ и утверждение доказано для всех $r\leq m-1$. Пусть $b_1, \dots b_m$ попарно взаимно просты и каждое из них делит $a$. В силу предложения индукции, $a$ делится на произведение $b = b_1\dots b_{m-1}$. Заметим, что $(b,b_m)=1$. Действительно, в противном случае найдется простое число $p$, делящееся как на $b_m$ так и на $b$. По лемме \ref{lemma6.1} $p$ будет делить и некоторые $b_{\xi}: 1\geq \xi \geq m-1$. Следовательно $(b_m,b_{\xi})\geq p>1$, что противоречит условию. Так как $a$ делится на $b$ и $b_m$, и $(b, b_m)=1$, то в силу леммы \ref{lemma6.2} $a$ делится на $bb_m=b_1\dots b_m$.
     \end{proof}
     \begin{lemma} \label{lemma6.3}
         Пусть числа $a$ и $b$ взаимно просты, и пусть $d_1$ и $d_2$ пробегают соответственно множества всех делителей $a$ и $b$. Тогда величина $d=d_1d_2$ пробегает без повторений всё множество делителей числа $ab$.
@@ -359,7 +362,7 @@
     \begin{definition}
         Функция Мебиуса $\mu(n)$ определяется равенствами:
         \[\mu(n)=\begin{cases}
-            1, \hspace{5pt} \text{если} \hspace{5pt} 1,\\
+            1, \hspace{5pt} \text{если} \hspace{5pt} n=1,\\
             0, \hspace{5pt} \text{если} \hspace{5pt} n \hspace{5pt} \text{делится на квадрат простого числа},\\
             (-1)^k,\hspace{5pt} \text{если} \hspace{5pt} n=p_1\dots p_k - \text{различные простые числа}.
         \end{cases}\]
@@ -371,18 +374,18 @@
         (Основное свойство функции Мебиуса) \label{th6.3}
         \[\sum\limits_{d\div n}\mu(d)=\begin{cases}
             1, \hspace{5pt} \text{если} \hspace{5pt} n=1,\\
-            0, \hspace{5pt} \text{если} \hspace{5pt} \text{во всех остальных случаях}.
+            0, \hspace{5pt} \text{во всех остальных случаях}.
         \end{cases}\]
     \end{theorem} 
     \begin{proof}
-        Пусть $F(n)=\sum\limits_{d\div n}\mu(d)\Rightarrow$ (По теореме 6.2) $F$ - мультипликативна. Пусть $p$ - простое, $n=p^{\alpha}, \alpha\geq 1 \Rightarrow F(p^{\alpha})=\sum\limits_{d\div p^{\alpha}}\mu(d)=\mu(1)+\mu(p)+\mu(p^2)+\dots +\mu(p^{\alpha})=1-1=0$.
+        Пусть $F(n)=\sum\limits_{d\div n}\mu(d)\Rightarrow$ (По теореме \ref{th6.2}) $F$ - мультипликативна. Пусть $p$ - простое, $n=p^{\alpha}, \alpha\geq 1 \Rightarrow F(p^{\alpha})=\sum\limits_{d\div p^{\alpha}}\mu(d)=\mu(1)+\mu(p)+\mu(p^2)+\dots +\mu(p^{\alpha})=1-1=0$.
     \end{proof}
     \begin{definition}
         Функция Эйлера $\phi(n)$ определяется для натурального $n$ как количество чисел $m$ с условиями $1\leq m\leq n$, таких, что $(m,n)=1$
     \end{definition}
-    \begin{example}
+    \begin{examples}
         $\phi(1)=1$, $\phi(2)=1$, $\phi(3)=1+1+0=2$, $\phi(4)=1+0+1+0=2$, $\phi(5)=1+1+1+1+0=4$, $\phi(6)=1+0+0+0+1+0=2$
-    \end{example}
+    \end{examples}
     \begin{theorem}
         Функция Эйлера $\phi$ мультипликативна. Кроме того, если $p_1,\dots,p_k$ - все различные делители $n$, тогда:
         \[\phi(n)=n\prod\limits_{p\div n}(1-\frac{1}{p})=n(1-\frac{1}{p_1})\dots(1-\frac{1}{p_k})\]
@@ -456,5 +459,105 @@
         $n=p^{\alpha}, \ p$ - простое.
         \[\tau(p^{\alpha})=\sum\limits_{d\div p^{\alpha}}1=\alpha+1\]
         $n=p_1^{\alpha_1}\dots p_k^{\alpha_k}\Rightarrow \tau(n)=(\alpha_1+1)(\alpha_2+1)\dots(\alpha_k+1)$.
-    \end{statement} 
+    \end{statement}
+    \begin{definition}
+        $\sigma(n)$ - сумма делителей числа $n\geq 1$
+        \[\sigma(n)=\sum\limits_{d\div n}d\]
+    \end{definition} 
+    \begin{examples}
+        $\sigma(6)=1+2+3+6=12$, $p$ - простое $\Rightarrow \sigma(p)=p+1$.
+    \end{examples}
+    Из теоремы \ref{th6.2} следует мультипликативность $\sigma(n)$.\\
+    $n=p^{\alpha} \Rightarrow \sigma = 1+p+p^2+\dots p^{\alpha}=\frac{p^{\alpha+1}-1}{p-1}$.\\
+    Если $n=p_1^{\alpha_1}\dots p_k^{\alpha_k} \Rightarrow \sigma(n)=\sigma(p_1^{\alpha_1})\dots \sigma(p_k^{\alpha_k})=\prod\limits_{s=1}^r\frac{p_1^{\alpha_s+1}-1}{p_s-1}=\prod\limits_{p^{\alpha} \div\div n}\frac{p^{\alpha+1}-1}{p-1}$
+    \begin{comm}
+        Функции $\tau(n)$ и $\sigma(n)$ - частный случай функции $\sigma_{\beta}(n)$, $\beta$ - любое вещественное число.
+        $\sigma_{\beta}(n)\sum\limits_{d\div n}1=\tau(n)$, $\sigma_1(n)=\sigma(n)$.
+    \end{comm}
+    Упражнение: Доказать, что $\sigma(n)+\phi(n)=n\tau(n)$ имеет место $\lra n$ - простое.
+    \begin{definition}
+        Делитель $d$ числа $n$ называется собстввенным, если $d<n$.
+    \end{definition} 
+    \begin{definition}
+        Число $n$ называется совершенным, если оно равно сумме своих собственных делителей: $n=\sigma(n)-n\lra \sigma(n)=2n$
+    \end{definition}
+    \begin{examples}
+        $\sigma(6)=12=6\cdot 2,\ \sigma(28)=56=2\cdot 28$.
+    \end{examples}
+    \begin{theorem} (Эйлер)\\
+        Четное число является совершенным $\lra$ когда оно имеет вид $2^{p-1}(2^p-1)$, где $p$ и $2^p-1$ - простые числа. (без доказательства)
+    \end{theorem} 
+    Простые числа вида $M_p=2^p-1$, где $p$ - простое, называются простыми Мерсена. Сейчас известно 51 простое число Мерсена. Самое большое из них отвечает простому $p=82589933$. В записи $M_p$ - 24862048 цифр. (результат получен 21.12.2018) Неизвестно, конечно или нет множество простых Мерсена. Гипотеза: если $\pi_M(x)$ - число простых Мерсена не превосходящих $x$, то\\
+    $\pi_M(x)\thickapprox \ln\ln x$. Неизвестно, существуют или нет нечетные совершенные числа. Если $N$ - нечетное совершенное число, то
+    \begin{itemize}
+        \item[(1)] $N>10^{1500}$ (2012г.)
+        \item[(2)] Наибольший простой делитель $N$ превосходит $10^8$ (2008г.)
+        \item[(3)] Второй по величине простой делитель $N$ превосходит $10^4$ (1999г.)
+        \item[(4)] Пусть $k\geq 1$. Тогда имеется не более чем $2^{4^k}$ несчетных совершенных чисел, имеющих ровно $k$ различных простых делителей. (2003г.)  
+    \end{itemize}
+    \begin{definition}
+        Числа $a$ и $b\ (1<a<b)$ называются дружественными, если $(a)$ $a$ есть сумма собственных делителей $b$, $(b)$ число $b$ - сумма собственных делителей $a$:
+         $\ \begin{cases}
+            \sigma(b)-b=a,\\
+            \sigma(a)-a=b.
+         \end{cases} \lra\ \ \ \sigma(a)=\sigma(b)=a+b$.   
+    \end{definition}
+    \begin{examples}
+        (ЕЩЕ НЕ ГОТОВО)
+    \end{examples}
+    Неизвестно, конечно или нет множество дружественных пар чисел. Сейчас извество $1229319267$ таких пар.
+    Пусть $A(x)$ - число дружественных пар с $a\leq x$. $\frac{A(X)}{x}\to 0$ при $x\to \infty$ (П. Эрдеш 1955г.)
+    \newpage
+    \section{Непрерывные дроби}
+    \begin{example}
+        Заметим, что  $43=19\cdot 2+5$, $19=5\cdot 3+4$. Рассмотрим дробь:
+        \begin{multline*}
+            \cfrac{a}{b}=\cfrac{19}{43}=\cfrac{1}{\cfrac{43}{19}}=\cfrac{1}{\cfrac{2\cdot 19+5}{19}}=\cfrac{1}{2+\cfrac{5}{19}}=\cfrac{1}{2+\cfrac{1}{\cfrac{19}{5}}}=\cfrac{1}{2+\cfrac{1}{\cfrac{5\cdot 3+4}{5}}}=\\
+            =\cfrac{1}{2+\cfrac{1}{3+\cfrac{1}{\cfrac{5}{4}}}}=\cfrac{1}{2+\cfrac{1}{3+\cfrac{1}{1+\cfrac{1}{4}}}}
+        \end{multline*}
+    \end{example}
+    \begin{definition}
+        Непрерывной (цепной) дробью будем называть выражение вида:
+        \[[q_0; q_1, q_2, \dots q_n] = q_0=\cfrac{1}{q_1+\cfrac{1}{q_2+\cfrac{1}{\ddots+\cfrac{1}{q_n}}}}\ \ \ (\ast)\]
+    \end{definition}
+    \begin{theorem} \label{th7.1}
+        Пусть $a$ - целое, $b$ - натуральное и пусть $(a,b)=1$. Пусть кроме того, $q_0, q_1,\dots, q_n$ - все неполные частные, возникающие при отыскании $(a,b)$ с помощью алгоритма Евклида. Тогда число $\alpha=\frac{a}{b}$ разлагается в непрерывную дробь вида ($\ast$).
+    \end{theorem} 
+    \begin{proof}
+        Доказательство следует из цепочки равненств:\\
+        \[a=bq_0+r_1,\]
+        \[b=r_1q_1+r_2,\]
+        \[r_1=r_2q_2+r_3,\]
+        \[\vdots\]
+        \[r_{n-2}=r_{n-1}q_{n-1}+r_n\]
+        Получаем:
+        \begin{equation*}
+            \cfrac{a}{b}=q_0+\cfrac{r_1}{b}=q_0+\cfrac{1}{\cfrac{b}{r_1}}=q_0+\cfrac{1}{q_1+\cfrac{r_2}{r_1}}=q_0+\cfrac{1}{q_1+\cfrac{1}{\cfrac{r_1}{r_2}}}=q_0+\cfrac{1}{q_1+\cfrac{1}{q_2+\cfrac{r_3}{r_2}}}=\dots
+        \end{equation*}
+        Собирая полученые равенства вместе приходим к $(\ast)$.
+    \end{proof}
+    \begin{example}\tab \\
+        $a=37,\ b=8,\\
+        37=8\cdot 4+5,\\
+        8=5\cdot 1+3,\\
+        5=3\cdot 1+2, \tab[1cm] \Rightarrow \alpha=\frac{37}{8}=[4;1,1,1,2].\\
+        3=2\cdot 1+1,\\
+        2=1\cdot 2$.
+    \end{example}
+    \begin{definition}
+        Величины $q_0, q_1, \dots, q_n$ в разложении числа $\alpha=\frac{a}{b}$ из теоремы \ref{th7.1} называется неполным частным $b$ в разложении $\alpha$ в непрерывную дробь.
+    \end{definition} 
+        Дроби \[\delta_0=q_0\]
+        \[\delta_1=q_0+\cfrac{1}{q_1}\] 
+        \[\delta_2=q_0+\cfrac{1}{q_1+\cfrac{1}{q_2}}\]
+        \[\vdots\]
+    называются подходящими дробями.
+    \begin{example}
+    \[q_0=4,\ q_1=1,\ q_2=1,\ q_3=1, q_4=2.\]
+    Тогда
+    \[\delta_0=4\]
+    \[\delta_1=4+\cfrac{1}{1}=5\]
+    \[\delta_2=4+\cfrac{1}{1+\cfrac{1}{1}}=4+\cfrac{1}{2}=\cfrac{9}{2}\]
+    \[\delta_3=4+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{1}}}=4+\cfrac{2}{3}=\cfrac{14}{3}\]
+    \end{example}
 \end{document}
