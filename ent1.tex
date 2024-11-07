@@ -750,7 +750,7 @@
     \end{theorem} 
     \begin{proof}\tab
         \begin{enumerate}
-            \item $ab\equiv ac+km \Rightarrow a(b-c)=km$, если $b=c$, то утверждение очевидно. Пусть $b\ne c \Rightarrow b-c=0$ и из равенства $a(b-c)=km$ следует, что $a\div km$. Но $(a,m)=1 \Rightarrow$ по теореме \ref{th2.3} $a\div k$, то есть $k=an \Rightarrow a(b-c)=anm\\
+            \item $ab\equiv ac+km \Rightarrow a(b-c)=km$, если $b=c$, то утверждение очевидно. Пусть $b\ne c \Rightarrow b-c\ne 0$ и из равенства $a(b-c)=km$ следует, что $a\div km$. Но $(a,m)=1 \Rightarrow$ по теореме \ref{th2.3} $a\div k$, то есть $k=an \Rightarrow a(b-c)=anm\\
             \Rightarrow b-c=nm \Rightarrow b\equiv c \pmod{m}$.
             \item $a=b+km \Rightarrow ad=bd+kmd \Rightarrow ad\equiv bd \pmod{md}$.
             \item По лемме \ref{lemma3.2} если $\alpha=bq+r$, то $(\alpha,\beta)=(\beta,r)$. Тогда $a\equiv b \pmod{m} \Rightarrow a=b+km \Rightarrow (\alpha=a,\ \beta=m,\ r=b) \Rightarrow (\alpha,\beta)=(a,m)=(\beta,r)=(m,b)$.
@@ -767,7 +767,7 @@
     \begin{example}
         Найти остаток от деления $11^6$ на $9$.\\
         $11\equiv 2 \pmod{9} \Rightarrow  11^6 \equiv 2^6 \pmod{9}\Rightarrow 11^6\equiv (2^3)^2 \pmod{9}\\
-        \Rightarrow 11\equiv (-1)^2 \pmod{9} \Rightarrow 11\equiv 1 \pmod{9}$.
+        \Rightarrow 11^6\equiv (-1)^2 \pmod{9} \Rightarrow 11^6\equiv 1 \pmod{9}$.
     \end{example}
     \begin{example}
         Натуральное число $n=8k+7$ не представимо суммой трех квадратов целых чисел.\\
@@ -901,7 +901,7 @@
         Пусть $m\geq 2$, $a$ - целое, $(a,m)=1\Rightarrow a^{\phi(m)}\equiv 1\pmod{m}$.
     \end{theorem} 
     \begin{proof}
-        Пусть $1=r_1<r_2<\dots<r_c<\dots<r_{m-1}$, $c=\phi(m)$ - приведенная система вычетов. Пусть $ar_k\equiv \rho_k \pmod{m}$, где $0<\rho<m$. Из теоремы \ref{8.5} следует, что $\rho_1,\dots \rho_k$ образуют перестановку чисел $r_1,\dots r_k$. Перемножим сравнения почленно: $a^cr_1,\dots,r_c\equiv\rho_1\dots\rho_c \pmod{m}$. Но $r_1,\dots r_c=\rho_1\dots\rho_c=R$ и число $R$ взаимно просто с $m$ (следует из теоремы \ref{th2.3}). По теореме \ref{th8.2} (пункт 1), обе части сравнения $a^cR\equiv R\pmod{m}\Rightarrow a^{\phi(m)}\equiv 1\pmod{m}$.
+        Пусть $1=r_1<r_2<\dots<r_c<\dots<r_{m-1}$, $c=\phi(m)$ - приведенная система вычетов. Пусть $ar_k\equiv \rho_k \pmod{m}$, где $0<\rho<m$. Из теоремы \ref{th8.5} следует, что $\rho_1,\dots \rho_k$ образуют перестановку чисел $r_1,\dots r_k$. Перемножим сравнения почленно: $a^cr_1,\dots,r_c\equiv\rho_1\dots\rho_c \pmod{m}$. Но $r_1,\dots r_c=\rho_1\dots\rho_c=R$ и число $R$ взаимно просто с $m$ (следует из теоремы \ref{th2.3}). По теореме \ref{th8.2} (пункт 1), обе части сравнения $a^cR\equiv R\pmod{m}\Rightarrow a^{\phi(m)}\equiv 1\pmod{m}$.
     \end{proof} 
     \begin{consequense} (Малая теорема Ферма)\\
         Пусть $p$ - простое число. Тогда при любом целом $a$ выполняется сравнение: $a^p\equiv a\pmod{p}$.
