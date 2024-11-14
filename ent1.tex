@@ -1017,13 +1017,13 @@
             a_0+x_{n+1} x_{n+1}+\dots+a_n x_{n+1}^n=p N_{n+1}.
         \end{cases}\]
         Рассмотрим это как систему линейных уравнений с неизвестными $a_0,\dots, a_n\\
-        \Rightarrow a_k=\frac{\Delta_k}{\Delta}$
+        \Rightarrow$ по формулам Крамера $a_k=\frac{\Delta_k}{\Delta}$
         \[\Delta=\begin{vmatrix}
             1 & x_1 & x_1^2 & \dots & x_1^n\\
             1 & x_2 & x_2^2 & \dots & x_2^n\\
             \vdots & \vdots & \vdots & \null & \vdots\\
             1 & x_{n+1} & x_{n+1}^2 & \dots & x_{n+1}^n
-        \end{vmatrix} = \prod\limits_{1\leq j < i\leq n+1}(x_j-x_i)\]
+        \end{vmatrix} = \prod\limits_{1\leq j < i\leq n+1}(x_i-x_j)\]
         Ни одна из разностей $x_j-x_i$ не делится на $p \Rightarrow \Delta$ не делится на $p$. $\Delta_k$ получается из $\Delta$ заменой $k$-го столбца на столбец, которой состоит из $pN_1,pN_2,\dots,pN_{n+1}\\
         \Rightarrow p\div \Delta_k \Rightarrow p\div a_k,\ \forall k$.
     \end{proof} 
@@ -1042,7 +1042,7 @@
         $f^{\prime}(x)=na_n x_{n-1}+(n-1)a_{n-1}x^{n-1}+\dots+2a_2x+a_1$. 
     \end{definition} 
     \begin{lemma}\label{lemma9.1}
-        Пусть $f(x)=a_nx^n+ \dots +a_1 x+a_0$ - многочлен с целыми коэффициэнтами, и пусть $\Delta$ - целое число. Тогад при любом $x$ справедливо равенство: $f(x+\Delta)-f(x)=\Delta\cdot a f^{\prime}(x)+\Delta^2g(x)$, где $g(x)$ - некоторый многочлен с целыми коэффициэнтами.
+        Пусть $f(x)=a_nx^n+ \dots +a_1 x+a_0$ - многочлен с целыми коэффициэнтами, и пусть $\Delta$ - целое число. Тогда при любом $x$ справедливо равенство: $f(x+\Delta)-f(x)=\Delta\cdot a f^{\prime}(x)+\Delta^2g(x)$, где $g(x)$ - некоторый многочлен с целыми коэффициэнтами.
     \end{lemma} 
     \begin{proof}
         \begin{multline*}
