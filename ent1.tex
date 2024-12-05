@@ -1293,4 +1293,69 @@
         \[\sum\limits_{y_1}^{\frac{q-1}{2}}[\frac{py_1}{q}]=\Delta_1\]
         $\Rightarrow \Delta_1+\Delta_2=p_1 q_1$.  
     \end{proof} 
-\end{document}
+    \newpage
+    \section{Первообразные корни}
+    Пусть $m\geq 2,\ (a,m)=1$. Из теоремы Эйлера \eqref{th8.6} следует существование целого $k\geq 1$ такого, что $a^k\equiv 1\pmod{m}$. Например можно взять $k=\phi(m)$
+    \begin{definition}
+        Наименьшее из чисел $k\geq 1$ таких, что $a^k\equiv 1\pmod{m}$, называется показателем, которому принадлежит число $a$ по модулю $m$. Озозначение: $\delta_m(a)$ или $\delta(a)$.
+    \end{definition} 
+    пример
+    %\begin{example}
+    %    $m=2$, здесь $a=1$,\ $a^1\equiv 1\pmod(2)$\\
+    %    $m=3$,\ здесь $a=1,\ 1^1\equiv 1\pmod{3},\ a=2,\ 2^1\equiv 2\pmod{3},\ 2^2\equiv 1\pmod{3},\ \delta_3(2)$\\
+    %    $m=4$,\ здесь $a=1,\ a=3,\ 3^1\equiv 2\pmod{4},\ 3^2\equiv 1\pmod{4},\ \delta_4(3)=2$\\
+    %    $m=5$,\ здесь $a=1,\ a=2,\ 2^1\equiv 2\pmod{5},\ 2^2\equiv 4\pmod{5},\ 2^3\equiv 3\pmod{5},\ 2^4\equiv 1\pmod{5},\ \delta_2(2)=4$\\
+    %    $a=3$
+    %\end{example}
+    \begin{lemma}\label{lemma11.1}
+        Если число $a$ принадлежит по модулю $m$ показателю $\delta$, то числа $a^0=1,\ a^1=a,\ a^2,\dots,\ a^{\delta-1}$ попарно несравнимы по модулю $m$.
+    \end{lemma} 
+    \begin{proof}
+        Допустим противное: $a^k\equiv a^l \pmod{m}$,\ но $0\leq j<k\leq \delta-1$. Сократив на $a^l$ получим: $a^{k-l}\equiv 1\pmod{m}$, но $1\leq k-l\leq \delta-1<\delta$, что противоречит определению $\delta$.
+    \end{proof} 
+    \begin{lemma}\label{lemma11.2}
+        Пусть $a$ принадлежит по модулю $m$ показателю $\delta$. Сравнение $a^{\gamma}\equiv a^{\gamma'}\pmod{m}$ возможно тогда и только тогда, когда $\gamma\equiv \gamma'\pmod{\delta}$. В частности, $a^{\gamma}\equiv 1\pmod{m}$ тогда и только тогда, когда $\gamma\equiv 0\pmod{\delta}$.
+    \end{lemma} 
+    \begin{proof}
+        Пусть $\gamma=q\delta+r,\ \gamma'=q'\delta+r'$, где $0\leq r,r'\leq q-1$. Тогда $a^{\gamma}=a^{q\delta+r}=(a^{\delta})^q a^r\equiv 1^qa^r\pmod{m}\equiv a^r\pmod{m}$. Аналогично, \\
+        $a^{\gamma'} \equiv a^{r'}\pmod{m} \Rightarrow$ сравнение $a^{\gamma}\equiv a^{\gamma'}\pmod{m}$ имеет место тогда и только тогда, когда $a^r\equiv a^{r'}$. По лемме \ref{lemma11.1}, это возможно тогда и только тогда, когда\\
+        $r=r'$.
+    \end{proof} 
+    \begin{consequense}
+        Показатели, которым принадлежат числа $a, \ (a,m)=1$, по модулю $m$, являются делителями числа $\phi(m)$. Теорема Эйлера гласит: $a^{\phi(m)}\equiv 1\pmod{m}\Rightarrow \phi(m)\equiv 1\pmod{\delta}$, то есть $\delta \div \phi(m)$.
+    \end{consequense} 
+    \begin{definition}
+        Числа, принадлежащие по модулю $m$ показателю $\phi(m)$, называются первообразными корнями по модулю $m$.
+    \end{definition} 
+    Из таблиц (таблицы еще не готовы :() следует, что по модулю $m=2$ первообразный корнем будет $a=1$, по модулю $m=3$ - число $a=2$, по модулю $m=4$ - число $a=3$, по модулю $m=5$ - число $a=2,\ a=3$, по модулю $m=8$ нет первообразных корней: $\phi(8)=4$, но $1^1\equiv 3^2\equiv 5^2\equiv 7^2\equiv 1\pmod{8}$.\\
+    Далее понадобится тождество:
+    \[\sum\limits_{d\div n} \phi(d)=n\ \ (\text{cледвствие теоремы \ref{th6.5}})\]
+    \begin{theorem}\label{th11.1}
+        Пусть $p\geq 2$ - простое число, $\delta$ - произвольный делитель числа $(p-1)$. Тогда в приведенной системе вычетов по модулю $p$ имеется ровно $\phi(\delta)$ чисел, принадлежащих показателю $\delta$. В частности по модулю $p$ существует $\phi(p-1)$ первообразных корней.
+    \end{theorem} 
+    пример
+    %\begin{example}
+    %    $p=7,\ p-1=6,\ \delta=1, 2, 3, 6.\ \phi(\delta)=1, 1, 2, 2$. \\
+    %    $2^1\equiv 2\pmod{7},\ 2^2\equiv 4\pmod{7},\ 2^3\equiv 1\pmod{7} \Rightarrow \delta(2)=3$\\
+    %    $3^1\equiv 3\pmod{7},\ 3^2\equiv 2\pmod{7},\ 3^3\equiv 6\pmod{7},\ 3^4\equiv 3\pmod{7}$
+    %\end{example}
+    \begin{proof}
+        Пусть $\delta \div (p-1)$, и пусть имеется хотя бы одно число $a$, принадлежащее этому показателю. Если $d\div (p-1)$, то через $f(d)$ обозначим количество чисел из приведенной системы вычетов, принадлежащих показателю $d$. То есть берем $\delta$ так, что $f(\delta)>0$. Покажем, что в этом случае $f(d)=\phi(\delta)$. По лемме \ref{lemma11.1}, числа ряда $a^0=1,\ a,\ a^2,\ \dots, a^{\delta-1}$ различны по $\mod{p}$. Пусть $0\leq l\leq \delta-1$. Тогда $(a^k)^{\delta}=(a^{\delta})^k\equiv 1\pmod{p} \Rightarrow$ каждое из чисел этого ряда удовлетворяет сравнению $x^{\delta}-1\equiv 0\pmod{p}$. По теореме Лагранжа \eqref{th9.5}, иных решений это сравнение не имеет. Но все числа, принадлежащие показателю $\delta$, тоже удовлетворяют сравнению $x^{\delta}-1\equiv 0$. Значит, все такие числа находятся среди этих чисел $1,\ a,\ a^2, \dots, a^{\delta-1}$. Осталось их распознать. Берем $a^k,\ 0<k\leq \delta-1$, и вычислим его показатель. Пусть $a^k$ принадлежит показателю $\Delta$, пусть $d=(\delta,k)$, такое что $k=k_1 d,\ \delta=\delta_1 d,\ (k_1, \delta_1)=1$. Тогда $1\equiv (a^k)^{\Delta} \pmod{p}\equiv a^{k\Delta}\pmod{p}\equiv a^{k_1d\Delta}\equiv 1\pmod{p} \Rightarrow $ по лемме $\ref{lemma11.2}, k_1d\Delta\equiv 0\pmod{\delta}\equiv 0\pmod{\delta_1 d}$. Сократим обе части на модулю на $d$: $k_1\Delta\pmod{\delta_1},\ \delta_1 \div k_1\Delta \Rightarrow \delta_1 \div \Delta \Rightarrow \Delta \geq \delta_1$. В то же время \\
+        $(a^k)^{\delta_1}\equiv a^{k\delta_1}\equiv a^{k_1 d\delta_1}\equiv a^{k_1\delta}\equiv 1\pmod{p} \Rightarrow \Delta \div \delta_1 \Rightarrow \delta_1\geq \Delta$.\\
+        Значит, можно заключить, что $\Delta=\delta_1=\frac{\delta}{d}=\frac{\delta}{(k,\delta)} \Rightarrow a^k$. принадлежит показателю $\frac{\delta}{(\delta, k)}$ с условиями $1\leq k \leq \delta-1,\ (k,\delta)=1$. Таких $k$ будет $\phi(\delta)$ штук. Значит ряд $a^0,\ a,\ a^2, \dots, a^{\delta-1}$ содержит ровно $\phi(\delta)$ чисел, принадлежащих показателю $\delta$. Значит, если $f(\delta)>0$, то $f(\delta)=\phi(\delta)$. Осталось оказать, что $f(\delta)=\phi(\delta)$ для всех $\delta \div p-1$
+        \[\sum\limits_{\delta \div p-1}f(\delta)=p-1 \Rightarrow \sum\limits_{\delta \div p-1}(\phi(\delta)-f(\delta))=0\]
+        Значит, $\phi(\delta)-f(\delta)=0 \forall \delta$, то есть $f(\delta)=\phi(\delta)$.
+    \end{proof}
+    \begin{theorem}\label{th11.2}
+        Пусть $p\geq 3$ - простое, $g$ - первообразный корень по модулю $p$. Тогда существует целое $t$, такое, что $g_1=g+pt$ будет первообразным корнем по любому модулю $p^{\alpha}, \alpha=2,3,\dots$
+    \end{theorem} 
+    \begin{proof}
+        По малой теореме Ферма 
+        \begin{multline*}
+            (g+pt)^{p-1}=g^{p-1}+C_{p-1}^1 g^{p-2} pt+p^2 b=g^{p-1}+(p-1)ptg^{p-2}+p^2b=\\
+            =g^{p-1}-g^{p-2}pt+p^2c=1+pa-pg^{p-2}t+p^2c=1+p(a-tg^{p-2})+p^2c     
+        \end{multline*}
+        $g^{p-1}\equiv 1\pmod{p} \Rightarrow g^{p-1}=1+p\alpha,\ \alpha$ - целое. Пусть $t$ - любое целое.
+        но $(g,p)=1$. Если $t$ пробегает полную систему вычетов по модулю $p$, то то же делает $a-tg^{p-2} \Rightarrow$ для некоторого $t=t_1$, число $v=a-tg^{p-2}$, будет взаимно просто с $p:(v,p)=1$. Берем $g_1=g+pt_1$ и докажем, что $g_1$ - первообразный корень по модулю $p^{\alpha}$. $\alpha\geq 2$ - фиксированное, и пусть $\delta$ - показатель, которому принадлежит $g_1$. По лемме \ref{lemma11.2}, $\delta \div \phi(p^{\alpha})=p^{\alpha-1}(p-1)$. Но $g_1\equiv g\pmod{p}$, $g_1^{\delta}\equiv g^{\delta}\equiv 1\pmod{p}$. Но $g$ принадлежит показателю $p-1$ $\Rightarrow$ по лемме \ref{lemma11.2} $\delta \equiv 0 \pmod{p-1},\ \delta=k(p-1),\ \delta=k(p-1) \div p^{\alpha-1}(p-1) \Rightarrow k\div p^{\alpha-1} \Rightarrow k$ обязательено имеет вид $p^{\beta-1}$, где $1\leq \beta\leq \alpha$. Остается доказать, что $\beta=\alpha$.
+    \end{proof} 
+    \end{document}
