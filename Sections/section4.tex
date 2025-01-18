@@ -1,0 +1,17 @@
+\section{Решение в целых числах линейного уравнения с двумя неизвестными}
+    Рассмотрим уравнение ($*$) $ax+by=c$, такое, что $a,b,c\in \Z, a$ и $b$ не равняются нулю одновременно. $x,y\in \Z$ - неизвестные.
+    \begin{theorem} \label{th4.1}
+        $(1)$ Уравнение $(*)$ разрешимо $\lra \Delta = (a,b) \div c$.\\
+        $(2)$ В случае разрешимости, множество решений этого уравнения бесконечно, все решения имеют вид $x=x_0+\frac{b}{\Delta}t, y=y_0-\frac{a}{\Delta}t$, где $x_0,y_0$ - произвольное решение, а $t\in \Z$.
+    \end{theorem} 
+    \begin{proof}
+        Докажем первый пункт:
+        \begin{itemize}
+            \item[$(\Rightarrow):$] Если $x,y$ - решение, то $\Delta \div ax, \Delta \div by\Rightarrow$ (лемма \ref{lemma1.1}) $\Delta \div ax+by\Rightarrow \Delta \div c$.
+            \item[$(\Leftarrow):$] Не теряя общности, можем считать, что $a\geq b\geq 0$. Доказываем индукцией по сумме $a+b$.\\
+            База: $a+b=1\Rightarrow b=0$ и $a=1 \Rightarrow$ уравнение имеет вид $ax=c\Rightarrow x=c$. Можем предъявить решение $x=c, y=0$. В этом случае $\Delta = (1,0) \div 1$. \\
+            Шаг: $n\geq 1$, считаем, что утверждение доказано для всех уравнений с условием $a\geq b\geq 0$, $1\leq a+b\leq n$. Пусть $ax+by=c$, где $a\geq b\geq 0,\\ a+b=n+1$ и $\Delta = (a,b) \div c \Rightarrow$ докажем, что есть хотя бы одно решение. Пусть $b=0, ax=c, \Delta = (a,0)=a, a\div c\Rightarrow c=am\Rightarrow x=m, y=0$ - решение. Пусть $b\geq 1$. Рассмотрим уравнение $(a-b)X+bY=c,\\ a-b\geq 0, b\geq 1 >0$. $(a-b)+b=(a+b)-b=n+1-b\leq n$. $(a-b, b)=(a,b) \div c\\ \Rightarrow$ по предположению индукции есть целочисленное решение $X_0,Y_0$. \\ $(a-b)X_0+bY_0=c\Rightarrow aX_0-b(Y_0-X_0) = c \Rightarrow x=X_0, y=Y_0-X_0$ - решение.
+        \end{itemize}
+        Докажем второй пункт (проверим, что $x_0,y_0$ - решение):\\
+        $a(x_0+\frac{b}{\Delta}t)+b(y_0-\frac{a}{\Delta}t)=ax_0+\frac{ab}{\Delta}t+by_0-\frac{ab}{\Delta}t=ax_0+by_0$. Обратно: пусть $x_0,y_0$ и $x,y$ - различные решения. $ax_0+by_0=c, ax+by=c \\ \Rightarrow a(x-x_0)+b(y-y_0)=0\Rightarrow a(x-x_0)=b(y_0-y)$. $\Delta = (a,b) \\ \Rightarrow a=\alpha\Delta, b=\beta\Delta\Rightarrow$ (теорема \ref{th2.4}) $(\alpha,\beta)=1 \\ \Rightarrow \alpha\Delta(x-x_0)=\beta\Delta(y_0-y)\Rightarrow \alpha(x-x_0)=\beta(y_0-y) \\ \Rightarrow \alpha \div \beta(y_0-y)\Rightarrow \alpha \div (y_0-y)\Rightarrow y_0-y=\alpha t\Rightarrow \alpha (x-x_0)=\beta \alpha t\\ \Rightarrow x-x_0=\beta t$.
+    \end{proof}

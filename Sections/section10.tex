@@ -1,0 +1,207 @@
+\section{Квадратичные вычеты}
+    \begin{definition}
+        Пусть $m\geq 2, n\geq 2$ - целые, $(a,m)=1$. Если сравнение $x^n\equiv a\pmod{m}$ имеет решение, то $a$ называется вычетом степени $n$ по модулю $m$. В противном случае $a$ называется невычетом $n$-й степени по$\mod{m}$.\\
+        При $n=2$, $a$ называется квадратичным вычетом (соответственно квадратичным невычетом) по$\mod{m}$.\\
+        При $n=3$, $a$ называется кубическим вычетом (соответственно кубическим невычетом) по$\mod{m}$.
+    \end{definition} 
+        Далее рассматриваем лишь случай $m=p$ - простое, $p\geq 3$, то есть изучать сравнения $x^2\equiv a\pmod{p},\ p$ не делит $a$. Квадратичные вычеты - это представители классов вычетов в которые попадают остатки от деления на $p$ квадратов целых чисел.
+    \begin{example}\tab
+        $x\tab[1cm] x^2\tab x^2\pmod{5}\\
+        \tab[2.8cm]1\tab[1cm] 1\tab[1.8cm] 1\\
+        \tab[2.8cm]2\tab[1cm] 4\tab[1.8cm] 4\\
+        \tab[2.8cm]3\tab[1cm] 9\tab[1.8cm] 4\\
+        \tab[2.8cm]4\tab[1cm] 16\tab[1.6cm] 1\\$
+        $\Rightarrow 1$ и $4$ - квадратичные вычеты по$\mod{5}$\\
+        $2$ и $3$ - квадратичные невычеты по$\mod{5}$.
+    \end{example}
+    \begin{theorem}\label{th10.1}
+        Если $a$ - квадратичный вычет по$\mod{p}$, то сравнение $x^2\equiv a\pmod{p}$ имеет ровно 2 решения.
+    \end{theorem} 
+    \begin{proof}
+        Так как $a$ - квадратичный вычет, то у сравнения есть хотя бы одно решение: $x\equiv x_1\pmod{p}$. Возьмем $x_2\equiv -x_1\pmod{p}$, т.ч. $x_2^2\equiv (-x_1)^2\equiv x_1^2\equiv 0\pmod{p}$, то есть $x\equiv x_2\pmod{p}$ - тоже решение. Эти решения различны, иначе мы бы имели: $x_1\equiv -x_1\pmod{p}$, то есть $2x_1\equiv 0\pmod{p}$, то есть $p\div 2x_1$, но $p\geq 3$, то есть $p$ не делит $2$. По теореме \ref{th2.3}, $p\div x_1$, что невозможно, так как $(a,p)=1$. По теореме Лагранжа (\ref{th9.5}) сравнение не может иметь более двух решений. 
+    \end{proof} 
+    \begin{theorem} \label{th10.2}
+        Приведенная система вычетов по простому модулю $p,\ (p\geq 3)$ состоит из $\frac{1}{2}(p-1)$ квадратичных вычетов, сравнимых с числами\\
+        $1^2,\ 2^2,\ 3^2,\ (\frac{p-1}{2})^2\ (1)$ и из $\frac{1}{2}(p-1)$ квадратичных невычетов
+    \end{theorem} 
+    \begin{proof}
+        Квадратичные вычеты лежат в тех классах, в которые попадают отстатки от деления на $p$ квадратов целых чисел $n$, не кратных $p$. Если $l\equiv n\pmod{p}$, то $l^2\equiv n^2\pmod{p}$, то есть достаточно рассмотреть числа $n=1,2,\dots,p-1$. Более того, так как $(p-n)^2=p^2-2pn+n^2\equiv n^2\pmod{p}$, так что достаточно рассмотреть числа $n=1,2,\dots,\frac{p-1}{2}$. Проверим, что квадраты этих чисел различны по$\mod{p}$. Предположим, что существует $1\leq l<n\leq\frac{1}{2}(p-1)$ т.ч. $n^2\equiv l^2\pmod{p} \Rightarrow (n+l)(n-l)\equiv 0\pmod{p}$. Это невозможно: $1\leq n-l, n+l\leq \frac{1}{2}(p-1)+\frac{1}{2}(p-1)-1=p-2<p$, то есть $(n\pm l, p)=1$. Квадратичных вычетов будет $\frac{1}{2}(p-1) \Rightarrow$ квадратичных невычетов будет $(p-1)-\frac{1}{2}(p-1)=\frac{1}{2}(p-1)$
+    \end{proof} 
+    \begin{theorem} (Критерий Эйлера) \label{th10.3} \\
+        Пусть $p\geq 3$ - простое $(a,p)=1$. Тогда $a$ будет квадратичным вычетом по модулю $p$ в том и только том случае, когда выполнено сравнение:\\
+        $a^{\frac{p-1}{2}}\equiv 1\pmod{p}$.
+    \end{theorem} 
+    \begin{proof}\tab
+        \begin{enumerate}
+            \item $(\Rightarrow)$ Пусть $a$ - квадратичный вычет. Значит, $a\equiv b^2\pmod{p}$ для некоторого $b$. Тогда $a^{\frac{p-1}{2}}\equiv (b^2)^{\frac{p-1}{2}}\pmod{p}\equiv b^{p-1}\pmod{p}\equiv 1 \pmod{p}$ (по малой теореме Ферма)
+            \item $(\Leftarrow)$ По малой теореме Ферма, $a^{p-1}-1\equiv 0\pmod{p}\Leftrightarrow (a^{\frac{p-1}{2}}-1)(a^{\frac{p-1}{2}}+1)\equiv 0\pmod{p}$. Значит, $p$ всегда делит какое-то из чисел $k=a^{\frac{p-1}{2}}-1,\ l=a^{\frac{p-1}{2}}+1$. Оба числа $k,l$ число $p$ делить не может, иначе $p\div l-k=2$, что невозможно. Подоказанному выше, всякий квадратичный вычет является решением сравнения $x^{\frac{p-1}{2}}-1\equiv 0\pmod{p}$. По теореме $\ref{th10.2}$ имеется ровно $\frac{p-1}{2}$ квадратичных вычетов. По теореме Лагранжа \eqref{th9.5}, квадратичные вычеты, и только они, будут решениями этого сравнения.
+        \end{enumerate}
+    \end{proof} 
+    \subsection*{Символ Лежандра}
+    \begin{definition}
+        Пусть $p\geq 3$ - простое, $a$ - целое. Символ Лежандра $(\frac{a}{p})$\\
+        ($a$ по $p$) определяется равенствами:\\
+        \[(\frac{a}{p})=\begin{cases}
+            \ \ 1,\ \ \text{если}\ $a$ - \text{квадратичный вычет по} \mod{p},\\
+            -1,\ \text{если}\ $a$ - \text{квадратичный невычет по} \mod{p},\\
+            \ \ 0,\ \text{если}\ p\div a.
+        \end{cases}
+        \]
+    \end{definition} 
+    \begin{consequense} (Теоремы \ref{th10.3})
+        При любом $a$ выполнено сравнение: \[a^{\frac{p-1}{2}}\equiv (\frac{a}{p}) \pmod{p}\]
+    \end{consequense} 
+    \begin{theorem}\label{th10.4} \tab
+        \begin{enumerate}
+            \item $a\equiv b\pmod{p} \Rightarrow(\frac{a}{p}=(\frac{b}{p}))$.
+            \item $(\frac{1}{p})=1$.
+            \item $(\frac{-1}{p})=(-1)^{\frac{p-1}{2}}$.
+            \item $(\frac{ab}{p})=(\frac{a}{p})\cdot (\frac{b}{p})$ для любых $a$ и $b$.
+            \item Если $(b,p)=1$, то $(\frac{ab^2}{p})=(\frac{a}{p})$.
+            \item $\sum\limits_{a=1}^{p}(\frac{a}{p})=0$.
+        \end{enumerate}
+    \end{theorem}
+        \begin{proof}\tab
+            \begin{enumerate}
+                \item Если $a,b\equiv 0\pmod{p}$ - очевидно. Если $(a,b)=1$, то сравнения\\
+                $x^2\equiv a\pmod{p}$ и $x^2\equiv b\pmod{p}$ одновременно либо разрешимы, либо неразрешимы.
+                \item $x^2\equiv 1\pmod{p}$ в силу разрешимости $x\equiv \pm 1\pmod{p}$
+                \item Полагая $a=-1$ в следствии теоремы \ref{th10.3}, получим:
+                \[(\frac{-1}{p})\equiv (-1)^{\frac{p-1}{2}}\pmod{p}\]
+                модуль разности правой и левой части $\leq 2 \Rightarrow (\frac{-1}{p})=(-1)^{\frac{p-1}{2}}$.
+                \item В силу следствия теоремы \ref{th10.3}, имеем:
+                \[\frac{ab}{p}\equiv(ab)^{\frac{p-1}{2}}\equiv a^{\frac{p-1}{2}}\cdot b^{\frac{p-1}{2}}\equiv (\frac{a}{p})\cdot(\frac{b}{p})\pmod{p}\ \ \Rightarrow (\frac{ab}{p})=(\frac{a}{p})(\frac{b}{p})\]
+                \item Согласно предыдущему пункту:
+                \[\frac{ab^2}{p}=(\frac{a}{p})\cdot(\frac{b}{p})\cdot(\frac{b}{p})=(\frac{a}{p})\cdot(\frac{b}{p})^2=(\frac{a}{p})\cdot 1=(\frac{a}{p})\]
+                \item Из теоремы \ref{th10.2} следует, что
+                \[\sum\limits_{a=1}^{p}(\frac{a}{p})=\sum\limits_{a=1}^{p-1}(\frac{a}{p})=\sum\limits_{\text{a-кв.выч.}}1 - \sum\limits_{\text{a-кв.выч.}}1=\frac{1}{2}(p-1)-\frac{1}{2}(p-1)=0\]
+            \end{enumerate}
+        \end{proof}
+    \begin{comm}
+        Из пунктов (1) и (6) несложно заключить, что $\forall m\in\Z$:
+        \[\sum\limits_{a=m+1}^{m+p}(\frac{a}{p})=0\]
+    \end{comm} 
+    \begin{consequense}
+        Пусть $p\geq 3$ - простое. Сравнение $x^2\equiv -1\pmod{p}$ разрешимо\\
+        $\Leftrightarrow$ $p$ имеет вид $4n+1$.
+    \end{consequense} 
+    \begin{example}
+        $x^2\equiv -1\pmod{13}$ разрешимо: $x\equiv 5,8\pmod{13}.\\
+        x^2\equiv -1\pmod{11}$ - неразрешимо.
+    \end{example}
+    \subsection*{Закон взаимности квадратичных вычетов}
+    Пусть $p\ne q$ - нечетные простые. Как связаны друг с другом $(\frac{p}{q})$ и $(\frac{q}{p})$.
+    \begin{theorem} \label{th10.5} 
+        Пусть $p\ne q$ - нечетные простые. Тогда справедливо равенство:
+        \[(\frac{p}{q})\cdot (\frac{q}{p})=(-1)^{\frac{p-1}{2}\cdot \frac{q-1}{2}}\]
+    \end{theorem} 
+    Для доказательства понядобятся две вспомогательные леммы. 
+    \begin{example}
+        $p=11,\ \frac{p-1}{2}=5,\ a=7,\\ 7\cdot 1\equiv -4 \equiv 7\pmod{11},\\ 7\cdot 2\equiv 3\equiv +3\pmod{11},\\ 7\cdot 3\equiv 10 \equiv -1\pmod{11},\\ 7\cdot 4\equiv 6\equiv -1 \pmod{11},\\ 7\cdot 5 \equiv 2 \equiv +2 \pmod{11}$.\\
+        $\Rightarrow 7^5\cdot 1\cdot 2\cdot 3\cdot 4\cdot 5\equiv (-4)(+3)(-1)(-5)(+2)\equiv -1\cdot 2\cdot 3\cdot 4\cdot 5\pmod{11}\\
+        \Rightarrow 7^5\equiv -1\pmod{11},\ 7^{\frac{11-1}{2}}\equiv -1\pmod{11}\Rightarrow (\frac{7}{11})=-1$.
+    \end{example}
+    \begin{lemma}\label{lemma10.1}
+        Пусть $p\geq 3$ - простое, $(a,p)=1$. Тогда
+        \[(\frac{a}{p})=(-1)^{\delta},\ \delta=\sum\limits_{x=1}^{p_1}[\frac{2ax}{p}],\ p_1=\frac{p-1}{2}\]
+    \end{lemma} 
+    \begin{proof}
+        Станем умножать $a$ на все положительные вычеты из наименьшей по модулю системы вычетов:\\
+        \[\begin{cases}
+            a\cdot 1\equiv \epsilon_1 r_1\pmod{p},\\
+            a\cdot 2\equiv \epsilon_2 r_2\pmod{p},\\
+            \tab[2.2cm]\vdots\\
+            a\cdot p_1\equiv \epsilon_{p_1} r_{p_1}\pmod{p}.      
+        \end{cases}\]
+        \[\epsilon_x=\pm 1,\ 1\leq r_x\leq \frac{p-1}{2}\]
+        Вычеты $r_x$ различны: пусть существует $1\leq x<y\leq p_1: r_x=r_y=r$. Тогда\\
+        $ax\equiv \epsilon_xr\pmod{p},\ ay\equiv \epsilon_yr\pmod{p}$. Если $\epsilon_x=\epsilon_y$, то $ax\equiv ay\pmod{p}\\
+        \Rightarrow x\equiv y\pmod{p}$. Если $\epsilon_x\ne \epsilon_y$, то $ax\equiv -ay \pmod{p}\\
+        \Rightarrow a(x+y)\equiv 0\pmod{p} \Rightarrow x+y\equiv 0\pmod{p}$, что невозможно в силу неравентсв $1<x+y<2p_1=p-1<p$. Значит, $r_1,r_2,\dots, r_{p_1}$ - перестановка чисел $1,2,\dots p_1$. Значит, $r_1 r_2 \dots r_{p-1}=1\cdot 2\cdot \dots \cdot p_1=R$. Очевидно, что $(R,p)=1$, перемножим: $a^{p_1}R\equiv \epsilon_1\dots \epsilon_{p_1}R\pmod{p} \Rightarrow a^{p_1}\equiv \epsilon_1\dots\epsilon_{p_1}\pmod{p}$. В силу критерия \\
+        Эйлера \eqref{th10.3}
+        \[(\frac{a}{p})=\epsilon_1\dots\epsilon_{p_1}\]
+        $\epsilon_x=1$, если вычет $ax\pmod{p}$ попадает в промежуток $[1,\frac{p-1}{2}],\\
+        \epsilon_x=-1$, если вычет $ax\pmod{p}$ попадает в промежуток $[\frac{p+1}{2},p-1]$.\\
+        Теперь рассмотрим дроби $\frac{2ax}{p}$, где $x=1,2,\dots, p_1$
+        \[[\frac{2ax}{p}]=[2\frac{ax}{p}]=2[\frac{ax}{p}]+[2\{\frac{ax}{p}\}]\]
+        Пусть $b\equiv c\pmod{p}$. Тогда 
+        \[\{\frac{b}{p}\}=\{\frac{a}{p}\},\ ax\equiv \epsilon_x r_x\pmod{p} \Rightarrow \{\frac{ax}{p}\}=\{\frac{\epsilon_x r_x}{p}\}\]
+        Если $\epsilon_x=\pm 1$, то 
+        \[\{\frac{ax}{p}\}=\{\frac{r_x}{p}\}=\frac{r_x}{p}\leq \frac{p-1}{2p}<1 \Rightarrow [2\{\frac{ax}{p}\}]=0 \Rightarrow [\frac{2ax}{p}]\]
+        - четное. $\epsilon_x=1 \Rightarrow [\frac{2ax}{p}]$ - четное, то есть $\epsilon_x=(-1)^{[\frac{2ax}{p}]}$.
+        Если $\epsilon_x=-1$, то 
+        \[\{\frac{ax}{p}\}=\{\frac{-r_x}{p}\}=\{1-\frac{r_x}{p}\}=\{\frac{p-r_x}{p}\}=\frac{p-r_x}{p}\geq \frac{p-p_1}{p}=\frac{p-\frac{p-1}{2}}{p}=\frac{p+1}{2p}>\frac{1}{2}\]
+        Однако \[\frac{1}{2}<\{\frac{ax}{p}\}<1 \Rightarrow 1<2\{\frac{ax}{p}\}<2 \Rightarrow [2\{\frac{ax}{p}\}]=1 \Rightarrow [\frac{2ax}{p}]=2[\frac{ax}{p}]+1\]
+        - нечетное.
+    \end{proof} 
+    \begin{lemma}\label{lemma10.2}
+        Пусть $p\geq 3$ - простое число, $(a,p)=1,\ a$ - нечетное. Тогда
+        \[(\frac{2}{p})\cdot(\frac{a}{p})=(-1)^{\delta_1},\ \delta_1=\sum\limits_{x=1}^{p_1}[\frac{ax}{p}]+\frac{p^2-1}{8},\ p_1=\frac{p-1}{2}\]
+    \end{lemma} 
+    \begin{proof}
+        $a+p$ - четное $\Rightarrow \frac{a+p}{2}$ - целое. По лемме $\ref{lemma10.1}$
+            \[(\frac{2a}{p})=(\frac{2a+2p}{2})=(\frac{2(a+p)}{p})=(\frac{4\frac{a+p}{2}}{p})=(\frac{\frac{a+p}{2}}{p})=(-1)^{\delta}\]
+            В силу леммы \ref{lemma10.1} последний символ лежандра равен $(-1)^{\delta}$, где
+            \begin{multline*}
+            \delta=\sum\limits_{x=1}^{p_1}[\frac{2(\frac{a+p}{2})x}{p}]=\sum\limits_{x=1}^{p_1}[\frac{(a+p)x}{p}]=\sum\limits_{x=1}^{p_1}[x+\frac{ax}{p}]=\sum\limits_{x=1}^{p_1}(x+[\frac{ax}{2}])=\\=\frac{\frac{p-1}{2}(\frac{p-1}{2}+1)}{2}+\sum\limits_{x=1}^{p_1}[\frac{ax}{p}]=\frac{p^2-1}{8}+\sum\limits_{x=1}^{p_1}[\frac{ax}{p}]=\delta_1
+        \end{multline*}
+    \end{proof} 
+    \begin{consequense}
+        \[(\frac{2}{p})=(-1)^{\frac{p^-1}{8}}\] 
+        Иными словами, 2 - квадратичный вычет по модулю $p \Leftrightarrow p=8n+1,\ 8n+7$. 2 - квадратичный невычет по модулю $p \Leftrightarrow p=8n+3,\ 8n+5$. 
+    \end{consequense} 
+    \begin{consequense}
+        \[(\frac{a}{p})=(-1)^{\Delta},\ \Delta = \sum\limits_{x=1}^{\frac{p-1}{2}}[\frac{ax}{p}]\]
+    \end{consequense} 
+    \begin{proof} (Теоремы \ref{th10.5})\\
+        \[(\frac{p}{q})=(-1)^{\Delta_1},\ \Delta_1=\sum\limits_{x=1}^{q_1}[\frac{px}{q}],\ q_1=\frac{q-1}{2}\]
+        \[(\frac{q}{p})=(-1)^{\Delta_1},\ \Delta_2=\sum\limits_{y=1}^{p_1}[\frac{qy}{p}],\ p_1=\frac{p-1}{2}\]
+        \[\Rightarrow (\frac{p}{q})\cdot(\frac{q}{p})=(-1)^{\Delta_1+\Delta_2}\]
+        а хотим получить: $\Delta_1+\Delta_2=p_1 q_1$.\\
+        
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[->] (-1,0) -- (12.7,0) node[right] {$x$};
+                \draw[->] (0,-1) -- (0,6.8) node[above] {$y$};
+                \draw[domain=0:12.5,samples=2] plot (\x, {0.5*(\x)}) node[below right] {$y=\frac{q}{p}x$};
+                \coordinate (x0) at (0,0) node[below left] {$O$}; 
+                \coordinate (y0) at (0,2);
+                \coordinate (y1) at (0,4);
+                \coordinate (y2) at (0,5.8);
+                \coordinate (x1) at (4,0);
+                \coordinate (x2) at (8,0);
+                \coordinate (x3) at (11.6,0);
+                \coordinate (F) at (4,2);
+                \coordinate (C) at (8,4);
+                \coordinate (A) at (11.6,5.8);
+
+                \draw[fill] (A) circle (2pt)  node[above] {$A$};
+                \draw[fill] (C) circle (2pt)  node[above] {$C$};
+                \draw[fill] (F) circle (2pt)  node[above] {$F$};
+                \draw[fill] (x3) circle (2pt)  node[below] {$\frac{p}{2}$} node[above right] {$D$};
+                \draw[fill] (x2) circle (2pt)  node[below] {$x_0$};
+                \draw[fill] (x1) circle (2pt)  node[below] {$\frac{p}{q}y_0$};
+                \draw[fill] (y0) circle (2pt)  node[left] {$y_0$} node[above right] {$E$};
+                \draw[fill] (y1) circle (2pt)  node[left] {$\frac{q}{p}x_0$};
+                \draw[fill] (y2) circle (2pt)  node[left] {$\frac{q}{2}$};
+                \draw[fill] (x0) circle (2pt);
+
+                \draw[dashed] (y0) -- (F);
+                \draw[dashed] (F) -- (x1);
+                \draw[dashed] (y1) -- (C);
+                \draw[dashed] (C) -- (x2);
+                \draw (y2) -- (A);
+                \draw (A) -- (x3);
+            \end{tikzpicture}
+        \end{center}
+        Точек с обеими положительными координатами: 
+        \[[\frac{p}{2}]\cdot[\frac{q}{2}]=\frac{p-1}{2}\cdot \frac{q-1}{2}=p_1 q_1\] 
+        На $OA$ нет целых точек (кроме O): иначе имели бы $n=\frac{q}{p}m,\ np=mq,\\
+        p\div mq,\ p\not\hspace*{4pt}\div q \Rightarrow p\div m$, аналогично $q\div n$. Но $1\leq m\leq \frac{p-1}{2}$ и это невозможно.\\
+        $x_0\in \Z \Rightarrow$ на $BC$ имеется $[\frac{qx_0}{p}]$ целых точек $\Rightarrow$ в нижнем треугольнике 
+        \[\sum\limits_{x_0=1}^{\frac{p-1}{2}}[\frac{qx_0}{p}]=\Delta_2\]
+        $y_1\in \Z \Rightarrow$ на $DE$ имеются $[\frac{py_1}{q}]$ целых точек $\Rightarrow$ в верхнем треугольнике 
+        \[\sum\limits_{y_1}^{\frac{q-1}{2}}[\frac{py_1}{q}]=\Delta_1\]
+        $\Rightarrow \Delta_1+\Delta_2=p_1 q_1$.  
+    \end{proof} 
+\newpage

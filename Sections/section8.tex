@@ -1,0 +1,200 @@
+\section{Теория сравнений}
+    Пусть $m\geq 2$ - целое.
+    \begin{definition}
+        Целые числа $a$ и $b$ называются сравнимыми по модулю $m$, если $a-b$ делится на $m$. Или, что то же, когда $a$ и $b$ при делении на $m$ дают одинаковые остатки. Число $m$ при этом называется модулем сравнения. Пишут $a\equiv b \pmod{m}$.
+    \end{definition}
+    \begin{examples}
+        $8\equiv 2 \pmod{3},\ 15\equiv 1 \pmod{7},\ 24\equiv0 \pmod{6}$
+    \end{examples}
+    \begin{theorem} (Простейшие свойства сравнений)\label{th8.1}
+         \begin{enumerate}
+            \item $a\equiv a \pmod{m},\ \forall a$
+            \item если $a\equiv b \pmod{m}$, то и $b\equiv a \pmod{m}$
+            \item если $a\equiv b \pmod{m}, b\equiv c \pmod{m}$, то $a\equiv c \pmod{m}$
+            \item если $a\equiv b \pmod{m},\ c\equiv d \pmod{m}$, то $a+c \equiv b+d \pmod{m}$ и\\
+            $ac\equiv bd \pmod{m}$
+         \end{enumerate}
+    \end{theorem} 
+    \begin{proof}
+        1-3 очевидно. Докажем 4:\\
+        $a=b+km,\ c=d+lm \Rightarrow a+c=(b+d)+(k+l)m\equiv b+d \pmod{m}$\\
+        $ac=(b+km)(d+lm)=bd+blm+dkm+klm^2=bd+m(bl+dk+lkm)\equiv \\ \tab[13.5cm] \equiv bd \pmod{m}$
+    \end{proof} 
+    \begin{consequense}
+        $a\equiv b \pmod{m},\ c,n$ - целые числа, $n\geq 1$, то $ca^n\equiv cb^n \pmod{m}$
+    \end{consequense} 
+    \begin{consequense}
+        $a\equiv b \pmod{m},\ P(x)$ - многочлен с целыми коэффициэнтами\\ $\Rightarrow P(a)\equiv P(b) \pmod{m}$.
+    \end{consequense} 
+    \begin{theorem}\label{th8.2}
+        Пусть $m\geq 2$. Тогда 
+        \begin{enumerate}
+            \item Если $ab\equiv ac \pmod{m}$ и $(a,m)=1$, то $b\equiv c \pmod{m}$.
+            \item Если $a\equiv b \pmod{m},\ d\geq 1$ - целое, то $ad\equiv bd \pmod{md}$.
+            \item Если $a\equiv b \pmod{m}$, то $(a,m)=(b,m)$.
+            \item Если $a\equiv b \pmod{m}$ и $d \div m,\ d\geq 2$, то $a\equiv b \pmod{d}$.
+        \end{enumerate}
+    \end{theorem} 
+    \begin{proof}\tab
+        \begin{enumerate}
+            \item $ab\equiv ac+km \Rightarrow a(b-c)=km$, если $b=c$, то утверждение очевидно. Пусть $b\ne c \Rightarrow b-c\ne 0$ и из равенства $a(b-c)=km$ следует, что $a\div km$. Но $(a,m)=1 \Rightarrow$ по теореме \ref{th2.3} $a\div k$, то есть $k=an \Rightarrow a(b-c)=anm\\
+            \Rightarrow b-c=nm \Rightarrow b\equiv c \pmod{m}$.
+            \item $a=b+km \Rightarrow ad=bd+kmd \Rightarrow ad\equiv bd \pmod{md}$.
+            \item По лемме \ref{lemma3.2} если $\alpha=bq+r$, то $(\alpha,\beta)=(\beta,r)$. Тогда $a\equiv b \pmod{m} \Rightarrow a=b+km \Rightarrow (\alpha=a,\ \beta=m,\ r=b) \Rightarrow (\alpha,\beta)=(a,m)=(\beta,r)=(m,b)$.
+            \item $a=b+km,\ m=nd,\ d\geq 2 \Rightarrow a=b+knd \Rightarrow a\equiv b \pmod{d}$.
+        \end{enumerate}
+    \end{proof} 
+    \begin{examples}\tab
+        \begin{enumerate}
+            \item $27 \equiv 3 \pmod{4} \Rightarrow 3\equiv 1 \pmod{4}$.
+            \item $26\equiv 4 \pmod{22} \Rightarrow 13\equiv 2 \pmod{11}$.
+            \item $48\equiv 28 \pmod{10}$, но $12 \not\equiv 7 \pmod{10}$.
+        \end{enumerate}
+    \end{examples}
+    \begin{example}
+        Найти остаток от деления $11^6$ на $9$.\\
+        $11\equiv 2 \pmod{9} \Rightarrow  11^6 \equiv 2^6 \pmod{9}\Rightarrow 11^6\equiv (2^3)^2 \pmod{9}\\
+        \Rightarrow 11^6\equiv (-1)^2 \pmod{9} \Rightarrow 11^6\equiv 1 \pmod{9}$.
+    \end{example}
+    \begin{example}
+        Натуральное число $n=8k+7$ не представимо суммой трех квадратов целых чисел.\\
+        $x$ - четное $\Rightarrow x=4y$ либо $x=4y+2,\ x^2=(4y)^2=16y^2\equiv 0 \pmod{8}$.\\
+        $x^2=(4y+2)^2=16y^2+16y+4\equiv 4 \pmod{8}$.\\
+        $x$ - нечетное $\Rightarrow x=4y\pm 1 \Rightarrow 16y^2\pm 8y+1\equiv 1 \pmod{8}$.
+        Следовательно, $x^2\equiv 0,1,4 \pmod{8}$, но число $7$ нельзя представить суммой трех величин, принимающих значения $0$, $1$ и $4$. 
+    \end{example}
+    \begin{theorem*} (Теорема Лагранжа)\\
+        Если $n\ne 4^a(8k+7)$, то $n$ представимо суммой трех квадратов целых чисел.
+    \end{theorem*} 
+    Сколько может быть чисел $n: 1\leq n\leq x,\ x\to +\infty,\ n=a^2+b^2$\ ?\\
+    Таких чисел примерно $\cfrac{Bx}{\sqrt{\ln{x}}}$, где $B=0,7\dots$ - постоянная Рамануджана-Ландау.
+    \begin{theorem}(8.4???)\label{th8.3}
+        Если числа $a$ и $b$ сравнимы по модулям $m_1,\dots,m_k$, то они сравнимы по модулю $m=$НОК$(m_1,\dots,m_k)$. 
+    \end{theorem} 
+    \begin{proof}
+        Если $a=b$, то утверждение очевидно. Пусть $a\ne b$, не теряя общности будем считать, что $a>b$. Так как $a\equiv b \pmod{m_i},\ i\in\overline{1,k} \Rightarrow$ натуральное число $a-b\equiv 0 \pmod{m}$, то есть число $a-b$ делится на каждое из чисел $m_1,\dots,m_k \Rightarrow a-b$ - их общее кратное. По теореме \ref{th2.1} получаем, что\\
+        $[m_1,\dots,m_k] \div (a-b)$
+    \end{proof} 
+    Пусть задан модуль $m\geq 2$. Все множество $\Z$ разобьем на непересекающиеся подмножества, относя к одному и тому же подмножеству те числа, что при делении на $m$ дают дают одинаковые остатки. Именно, $a=q_1 m+r_1,\\
+    b=q_2 m+r_2,\ 0\leq r_1,\ r_2\leq m-1$  относятся к одному и тому же подмножеству $\lra r_1=r_2$. Так получим ровно $m$ подмножеств, которые отвечают остаткам $r=0,1,\dots,m-1$ (все они непусты).
+    \begin{definition}
+        Построенные таким образом подмножества $\N$ называются классами вычетов по модулю $m$. Элементы каждого из этих подмножеств называются вычетами этого класса. Класс вычетов по модулю $m$, содержащий число $a$, иногда обозначают через $\bar{a}$ или $[a]$ или $[a]_m$.
+    \end{definition} 
+    Очевидно, что равенство классов $\bar{a}$ и $\bar{b}$ имеет место $\lra a\equiv b \pmod{m}$. Множество всех классов вычетов по модулю $m$ будем обозначать символом $\Z_m$
+    \begin{example}
+        Пусть $m=4 \Rightarrow$ остатки: $0,1,2,3 \Rightarrow \Z_4$ состоит из классов:\\
+        $1)\ a=4n,\ \ \ \ 2)\ a=4n+1,\ \ \ \ 3)\ a=4n+2,\ \ \ \ 4)\ a=4n+3$.
+    \end{example}
+    \begin{definition}
+        Пусть $m\geq 2$ и пусть $a_1,\dots,a_m$ - произвольные представители различных классов вычетов по модулю $m$. Тогда совокупность $a_1,\dots,a_m$ называется полной системой вычетов по модулю $m$.
+    \end{definition} 
+    \begin{examples}\tab
+        \begin{enumerate}
+            \item $m=4$, числа $a_1=13,\ a_2=7,\ a_3=6,\ a_4=8$.\\
+            $a_4\equiv 0 \pmod{4},\ a_1\equiv 1 \pmod{4},\ a_2\equiv 2 \pmod{4},\ a_3\equiv 3 \pmod{4}$\\
+            $\Rightarrow 13,7,6,8$ - полная система вычетов по модулю $4$.
+            \item $m=5,\ a_1=2,\ a_2=6\ a_3=16,\ a_4=8,\ a_5=9$.\\
+            $a_1 \equiv 2 \pmod{5},\ a_2 \equiv 1 \pmod{5},\ a_3 \equiv 1 \pmod{5},\ a_4 \equiv 3 \pmod{5},\\
+            a_5 \equiv 4 \pmod{5} \Rightarrow$ числа $2,6,16,8,9$ не образуют полную систему вычетов по модулю $5$.
+        \end{enumerate}
+    \end{examples}
+    Обычно в качестве полной системы вычетов по модулю $m$ берут совокупность $0,1,\dots, m-1$, состоящую из наименьших неотрицательных представителей всех классов вычетов.\\
+    Иногда удобно работать с системой вычетов, составленой из наименьших по абсолютной величине представителей классов вычетов.
+    \begin{example}
+        Пусть $m=7$:\\
+        $...,-21,\ -14,\ -7,\ 0,\ 7,\ 14,\ 21,... \equiv 0 \pmod{7}$ - берем 0\\
+        $...,-20,\ -13,\ -6,\ 1,\ 8,\ 15,\ 22,... \equiv 1 \pmod{7}$ - берем 1\\
+        $...,-19,\ -12,\ -5,\ 2,\ 9,\ 16,\ 23,... \equiv 2 \pmod{7}$ - берем 2\\
+        $...,-18,\ -11,\ -4,\ 3,\ 10,\ 17,\ 24,... \equiv 3 \pmod{7}$ - берем 3\\
+        $...,-17,\ -10,\ -3,\ 4,\ 11,\ 18,\ 25,... \equiv 4 \pmod{7}$ - берем -3\\
+        $...,-16,\ -9,\ -2,\ 5,\ 12,\ 19,\ 26,... \equiv 5 \pmod{7}$ - берем -2\\
+        $...,-15,\ -8,\ -1,\ 6,\ 13,\ 20,\ 27,... \equiv 6 \pmod{7}$ - берем -1\\
+        Итак, полная наименьшая по абсолютной величине система вычетов\\ 
+        по модулю $7: \{-3,-2,-1,1,2,3,0\}$
+    \end{example}
+    \begin{example}
+        Общий случай:\\
+        Для нечетного $n$ получаем $-\frac{m-1}{2},-\frac{m-3}{2},\dots,-1,0,1,\dots,\frac{m-3}{2},\frac{m-1}{2}$.\\
+        Для четного $n$ получаем $-\frac{m}{2}+1,\dots,-1,0,1,\dots,\frac{m}{2}-1,\frac{m}{2}$.
+    \end{example}
+    \begin{theorem} \label{th8.4}
+        Пусть $m\geq 2,\ a,b\in \Z$, причем $(a,m)=1$. Если величина $x$ пробегает полную систему вычетов по модулю $m$, то и величина $ax+b$ пробегает полную систему вычетов по модулю $m$.
+    \end{theorem} 
+    \begin{proof}
+        Достаточно доказать, что если $x_1\not\equiv x_2 \pmod{m}$, то сравнение $ax_1\equiv ax_2 \pmod{m}$ невозможно. По теореме \ref{th8.2} п.1 на $a$ можно сократить: получим $x_1 \equiv x_2 \pmod{m}$ - противоречие.
+    \end{proof} 
+    \begin{consequense}
+        Пусть $m\geq 2,\ a\in \Z,\ (a,m)=1$. Тогда существует единственный класс вычетов $c \pmod{m}$ такой, что $ac\equiv 1 \pmod{m}$.
+    \end{consequense} 
+    \begin{proof}
+        Для $ax-1$ при некотором $x=c$ будет выполнено: $ac-1\equiv 0 \pmod{m},\ ac\equiv 1 \pmod{m}$. Пусть $ac_1 \equiv 1 \pmod{m}$ и $ac_2 \equiv 1 \pmod{m} \Rightarrow a(c_1-c_2)\equiv 0 \pmod{m} \Rightarrow m\div a(c_1-c_2) \Rightarrow m\div (c_1-c_2)$, то есть это возможно лишь при $c_1\equiv c_2 \pmod{m}$.
+    \end{proof}
+    \begin{comm}
+        Такой вычет $c$ (класс вычетов $\bar{c}$) называют обратным к $a$ (соответственно обратным к классу $\bar{a}$). Обозначим его как $a^{\ast}$ (соответственно $\bar{a}^{\ast}$).
+    \end{comm} 
+    \begin{example}
+        $m=5,\ a=3,\ b=4$\\
+        $x\tab 3x+4\tab 3x+4\pmod{5}\\
+        0\tab[1cm] 4\tab[2.5cm] 4\\
+        1\tab[1cm] 7\tab[2.5cm] 2\\
+        2\tab[1cm] 10\tab[2.3cm] 0\\
+        3\tab[1cm] 13\tab[2.3cm] 3\\
+        4\tab[1cm] 16\tab[2.3cm] 1$
+    \end{example}
+    \begin{comm}
+        Условие $(a,m)=1$ опустить нельзя.
+    \end{comm} 
+    \begin{example}
+        (Почему условие выше опустить нельзя) $m=6,\ a=2,\ b=1$\\
+        $x\tab 2x+1\tab 2x+1\pmod{b}\\
+        0\tab[1cm] 1\tab[2.5cm] 1\\
+        1\tab[1cm] 3\tab[2.5cm] 3\\
+        2\tab[1cm] 5\tab[2.5cm] 5\\
+        3\tab[1cm] 7\tab[2.5cm] 1\\
+        4\tab[1cm] 9\tab[2.5cm] 3\\
+        5\tab[1cm] 11\tab[2.3cm] 5$
+    \end{example}
+    \begin{example}
+        $m=7\\
+        1\cdot 1\equiv 1\pmod{7}\Rightarrow 1^{\ast}\equiv 1\pmod{7}\\
+        2\cdot 4 \equiv 1\pmod{7}\Rightarrow 2^{\ast}\equiv 4 \pmod{7}\\
+        3\cdot 5 \equiv 1\pmod{7}\Rightarrow 3^{\ast}\equiv 5 \pmod{7}\\
+        4\cdot 2 \equiv 1\pmod{7} \Rightarrow 4^{\ast}\equiv 2\pmod{7}\\
+        5\cdot 3\equiv 1\pmod{7} \Rightarrow 5^{\ast}\equiv 3\pmod{7}\\
+        6\cdot 6 \equiv 1\pmod{7} \Rightarrow 6^{\ast}\equiv 7\pmod{7}$
+    \end{example}
+    Согласно теореме \ref{th8.2}\ (пункт 3), числа, принадлежащие одному классу вычетов по модулю $m$, имеют с модулем один и тот же НОД. ($a\equiv b \pmod{m}\\
+    \Rightarrow (a,m)=(a,b)$)\\
+    Поэтому особый интерес придставляют классы, для которых этот НОД равен 1. Взяв от каждого такого класса по одному вычету, получим приведенную систему вычетов по модулю $m$. Возьмем в качестве такой полной системы вычетов числа $0,1,\dots, m-1$. Так как среди этих чисел количество взаимно простых с модулем $m$ равно $\phi(m)$, то и любая приведенная система вычетов содержит $\phi(m)$ элементов. Обозначение: $\Z_m^*$.
+    \begin{example}
+        $m=6;\ \ 0,1,2,3,4,5\ \Rightarrow 1,5$ - приведенная система вычетов.\\
+        $m=7;\ \ 0,1,2,3,4,5,6\ \Rightarrow 1,2,3,4,5,6$ - приведенная система вычетов.\\
+        $m=10;\ \ 0,1,2,3,4,5,6,7,8,9\ \Rightarrow 1,3,7,9$ - приведенная система вычетов.\\
+        $m$ - простое $\Rightarrow \Z_m^*=\{1,2,\dots, p-1\}$.
+    \end{example}
+    \begin{theorem}\label{th8.5} (8.6??)
+        Пусть $m\geq 2$, $a$ - целое число, $(a,m)=1$, и пусть $x$ пробегает приведенную систему вычетов по модулю $m$. Тогда и величина $ax$ будет пробегать приведенную систему вычетов по модулю $m$.  
+    \end{theorem} 
+    \begin{proof}
+        Что нужно проверить.
+        \begin{enumerate}
+            \item $ax_1\equiv ax_2$ невозможно, если $x_1\not\equiv x_2\pmod{m}$.
+            \item $(ax,m)=1$ для всех $x\in \Z_m^*$.
+        \end{enumerate}
+        1. был проверен при доказательстве теоремы \ref{th8.4}.\\
+        2. пусть $(ax,m)=\delta>1 \Rightarrow$ для некоторого $x: (x,m)=1\Rightarrow \delta \div ax$, причем $a\ne 0$ и $x\ne 0$ (следует из взаимной простоты с $m$) $\Rightarrow$ (по теореме \ref{th2.3}) $\delta \div a$. Но $\delta \div m$. Значит $\delta \div (a,m)\Rightarrow (a,m)\geq \delta>1$ противоречие.
+    \end{proof} 
+    \begin{theorem}\label{th8.6} (Теорема Эйлера)\\
+        Пусть $m\geq 2$, $a$ - целое, $(a,m)=1\Rightarrow a^{\phi(m)}\equiv 1\pmod{m}$.
+    \end{theorem} 
+    \begin{proof}
+        Пусть $1=r_1<r_2<\dots<r_c<\dots<r_{m-1}$, $c=\phi(m)$ - приведенная система вычетов. Пусть $ar_k\equiv \rho_k \pmod{m}$, где $0<\rho<m$. Из теоремы \ref{th8.5} следует, что $\rho_1,\dots \rho_k$ образуют перестановку чисел $r_1,\dots r_k$. Перемножим сравнения почленно: $a^cr_1,\dots,r_c\equiv\rho_1\dots\rho_c \pmod{m}$. Но $r_1,\dots r_c=\rho_1\dots\rho_c=R$ и число $R$ взаимно просто с $m$ (следует из теоремы \ref{th2.3}). По теореме \ref{th8.2} (пункт 1), обе части сравнения $a^cR\equiv R\pmod{m}\Rightarrow a^{\phi(m)}\equiv 1\pmod{m}$.
+    \end{proof} 
+    \begin{consequense} (Малая теорема Ферма)\\
+        Пусть $p$ - простое число. Тогда при любом целом $a$ выполняется сравнение: $a^p\equiv a\pmod{p}$.
+    \end{consequense} 
+    \begin{proof}
+        Если $p\div a$, то очевидно. Если $(a,p)=1$, то $a^{\phi(p)}\equiv 1\pmod{p}\\
+        \Rightarrow a^{p-1}\equiv 1\pmod{p}\Rightarrow a^p\equiv a\pmod{p}$.
+    \end{proof}
+\newpage

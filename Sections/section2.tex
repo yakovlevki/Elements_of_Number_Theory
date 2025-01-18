@@ -1,0 +1,41 @@
+\section{Наименьшее общее кратное и наибольший общий делитель (НОК и НОД)}
+    \begin{def20}
+         $n\geq 2, a_1, \dots, a_n \in \mathbb{N}$ пусть натуральное число $k$ делится на каждое из этих чисел. Тогда $k$ - общее кратное чисел $a_1, \dots, a_n$. \\
+        Пусть $a_1, \dots, a_n$ - целые числа не все равные нулю. Натуральное число $d$ называется общим делителем $a_1, \dots, a_n$, если $d$ делит каждое из этих чисел.
+    \end{def20}
+    \begin{comm}
+        Множество таких $k$ непусто, в нем лежит, например, произведение всех этих чисел. \\ Множество таких $d$ конечно: если $a_i\ne 0$, то $d$ находится среди делителей числа $a_i$, (по пункту 6 леммы \ref{lemma1.1}) $d\leq |a_i|$, значит числа $d$ образуют конечное множество, оно непусто, так как содержит единицу.
+    \end{comm}
+    \begin{definition}
+        Наименьшее натуральное число, делящееся на каждое из чисел $a_1, \dots, a_n$, называют их наименьшим общим кратным, его обозначают $[a_1, \dots, a_n]$.
+    \end{definition}
+    \begin{theorem} \label{th2.1}
+        Каждое общее кратное натуральных чисел $a_1, \dots, a_n$ делится на их НОК.
+    \end{theorem}
+    \begin{proof}
+        Пусть $M$ - общее кратное $a_1, \dots, a_n$, $K=[a_1, \dots, a_n]$. Поделим $M$ на $K$ с остатком: $M=kq+r, 0\leq r\leq k-1\leq k$. Допустим, что $K\ne 0$. По определению, всякое число $a_i$ делит оба числа $M$ и $K \Rightarrow a_i$ делит разность $k=M-qK$, значит $k$ является общим кратным для $a_1, \dots, a_n$, но $k<K$, получаем противоречие, так как какое-то кратное оказалось меньше минимального. Значит, $k=0$ и $M=qK$.  
+    \end{proof}
+    \begin{definition}
+        Наибольшее из натуральных чисел $d$, делящих каждое из чисел $a_1, \dots, a_n$, называют наибольшим общим делителем $a_1, \dots, a_n$, его обозначают $(a_1, \dots, a_n)$.
+    \end{definition}
+    \begin{definition}
+        Числа $a$ и $b$ называются взаимно простыми, если $(a,b)=1$. Числа $a_1, \dots, a_n$ называются взаимно простыми в совокупности, если \\ $(a_1, \dots, a_n)=1$. Числа $a_1, \dots, a_n$ попарно взаимно просты, если $(a_i,a_j)=1$ $\forall i,j: 1\leq i<j\leq n$.
+    \end{definition}
+    \begin{theorem} \label{th2.2}
+        $[a,b]\cdot (a,b)=ab, \forall a,b \in \mathbb{N}$.
+    \end{theorem}
+    \begin{proof}
+        $ab$ - общее кратное $a$ и $b$. По теореме \ref{th2.1} $ab$ делится на $[a,b]$, то есть $ab=c[a,b]$, где $c\geq 1$ - натуральное число. Покажем, что $a$ и $b$ делятся на $c$. Действительно, $a=\frac{ab}{[a,b]}\cdot \frac{[a,b]}{b}=c\cdot \frac{[a,b]}{b}$, $b=\frac{ab}{[a,b]}\cdot \frac{[a,b]}{a}=c\cdot \frac{[a,b]}{a}$, но оба числа $\frac{[a,b]}{a}$ и $\frac{[a,b]}{b}$ - натуральные, значит $c$ - общий делитель $a$ и $b$. Пусть теперь $d$ - произвольный общий делитель $a$ и $b$, тогда $\frac{ab}{d}=a\cdot \frac{b}{d}$, то есть число $\frac{ab}{d}$ делится нацело на каждое из чисел $a$ и $b$. По теореме \ref{th2.1}, оно делится на $[a,b]$, то есть $\frac{ab}{d}=[a,b]m, $ где $ m\geq 1$ - натуральное число, но тогда $\frac{ab}{[a,b]}=c=dm$, то есть $d$ делит $c$. В силу пункта 6 леммы \ref{lemma1.1} $d\leq c$, значит $c=(a,b)$.
+    \end{proof}
+    \begin{theorem} \label{th2.3}
+        Пусть $a,b,c \in \mathbb{N}$, причем $a \div bc$ и $(a,b)=1$, тогда $a \div c$. 
+    \end{theorem}
+    \begin{proof}
+        $(a,b)=1 \Rightarrow$ (по теореме \ref{th2.2}) $bc$ делится нацело на $[a,b]=ab$, то есть $bc=abm$, где $m\geq 1$ - натуральное число. Сократим обе части на $b$, получим $c=am$. 
+    \end{proof}
+    \begin{theorem} \label{th2.4}
+        Пусть $\Delta=(a,b)\geq 1 \Rightarrow (\frac{a}{\Delta}, \frac{b}{\Delta})=1$.
+    \end{theorem} 
+    \begin{proof}
+        Пусть $m\in \N$ и $m \mid \frac{a}{\Delta}, m \mid \frac{b}{\Delta}$ предположим, что $m > 1 \Rightarrow cm=\frac{a}{\Delta},dm=\frac{b}{\Delta}\Rightarrow \Delta cm=a, \Delta dm=b \Rightarrow \Delta m \mid a$ и $\Delta m\mid b\Rightarrow \Delta m$ - общий делитель $a$ и $b$. Но т.к. $m>1$, то $\Delta m>\Delta \Rightarrow \Delta=(a,b) \leq \Delta m$ - противоречие, поскольку $\Delta$ - НОД $\Rightarrow m=1\Rightarrow (\frac{a}{\Delta}, \frac{b}{\Delta})=1$.
+    \end{proof} 

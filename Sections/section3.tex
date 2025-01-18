@@ -1,0 +1,24 @@
+\section{Алгоритм Евклида}
+    \begin{lemma} \label{lemma3.1}
+        Пусть $a\in \Z, b\in \N$ и $b \mid a$. Тогда $(a,b)=b$.
+    \end{lemma}
+    \begin{proof}
+        Пусть $(a,b)=c\Rightarrow c\mid b \Rightarrow$ (по лемме \ref{lemma1.1}) $c\leq b$, но $b\mid a,\\ b\mid b\Rightarrow b$ - общий делитель $a$ и $b\Rightarrow b\leq c\Rightarrow b=c=(a,b)$.
+    \end{proof} 
+    \begin{lemma} \label{lemma3.2}
+        Пусть $a\in \Z, b\in \N, a=bq+r: r,q\in \Z, r\geq 0$. Тогда $(a,b)=(b,r)$. 
+    \end{lemma} 
+    \begin{proof}
+        Пусть $\Delta=(a,b), \delta=(b,r)$. Имеем $\delta \div b \Rightarrow \delta \div bq, \delta \div r\Rightarrow$ (лемма \ref{lemma1.1}) $\delta \div bq+r=a\Rightarrow \delta \div a,\delta \div b\Rightarrow \delta$ - общий делитель $a$ и $b \Rightarrow \delta\leq \Delta$. \\ $\Delta \div b, \Delta \div bq, \Delta \div a\Rightarrow$ (лемма \ref{lemma1.1}) $\Delta \div a-bq=r\Rightarrow \Delta$ - общий делитель $b$ и $r\Rightarrow \Delta \leq \delta \Rightarrow \Delta = \delta$.
+    \end{proof} 
+    \begin{algorithm}
+        Получаем, что при поиске НОД $a$ и $b, (a,b)$ можно заменять любой парой $(b,r)=(b,a-bq), q\in \Z$. Положим $r_0=a, r_1=b$. \\ 
+        Выполняем деление с остатком:\\
+        $$r_0=r_1q_1+r_2,\ 0<r_2<r_1\Rightarrow (r_0, r_1)=(r_1,r_2)$$
+        $$r_1=r_2q_2+r_3,\ 0<r_3<r_2\Rightarrow (r_1, r_2)=(r_2,r_3)$$
+        $$r_2=r_3q_3+r_4,\ 0<r_4<r_3\Rightarrow (r_2, r_3)=(r_3,r_4)$$
+        \tab[8.5cm]\vdots 
+        $$r_{n-2}=r_{n-1}q_{n-1}+r_n,\ 0<r_n<r_{n-1}\Rightarrow (r_{n-2}, r_{n-1})=(r_{n-1},r_n)$$
+        $$r_{n-1}=r_nq_n$$
+        $$\Rightarrow \text{(лемма \ref{lemma3.1})} (r_{n-1},r_n)=r_n\Rightarrow (a,b)=r_n$$
+    \end{algorithm}

@@ -1,0 +1,229 @@
+\section{Мультипликативные функции}
+    Обозначения и пояснения:
+    \begin{enumerate}
+        \item $\sum\limits_{d\div n}f(d)$ - сумма значений функции $f$ по всем делиителям $d$ числа $n$.
+        \item Двойная сумма вычисляется следующим образом: \[\sum\limits_{m=1}^M\sum\limits_{n=1}^Ng(mn)=\sum\limits_{n=1}^Ng(1,n)+\sum\limits_{n=1}^Ng(2,n)+\dots +\sum\limits_{n=1}^Ng(M,n)\]
+    \end{enumerate}
+    \begin{definition}
+        Функция $f$, определенная на множестве $\N$ называется мультипликативной, если для любых взаимно простых $a,b\in \N$ выполнено равенство:
+        $$f(ab)=f(a)f(b)$$
+    \end{definition}
+    \begin{theorem}(Простейшие свойтсва мультипликативных функций) \label{th6.1}\\
+        Пусть $f,g$ - мультипликативные функции. Тогда:
+        \begin{enumerate}
+            \item Если $f\not\equiv 0$, то $f(1)=1$.
+            \item Если $n=p_1^{\alpha_1}\dots p_r^{\alpha_r}$ - каноническое разложение $n$, то $f(n)=f(p_1^{\alpha_1})\dots f(p_r^{\alpha_r})$.
+            \item Функция $h$, определенная для любого $n\in \N$ равенством\\ $h(n)=f(n)g(n)$ - мультипликативна. 
+        \end{enumerate}
+        \begin{proof}\tab
+            \begin{enumerate}
+            \item Так как $f\not\equiv 0$, то $\exists\ a\in \N: f(a)\ne 0$. Тогда\\ $f(a)=f(a\cdot 1)=f(a)f(1) \Rightarrow f(1)=1$.
+            \item и$\ $ 3. Напрямую следуют из определения.
+            \end{enumerate}
+        \end{proof}
+    \end{theorem}
+    Для исседования дальнейших свойств мультипликативных функций потребуется несколько вспомогательных лемм
+    \begin{lemma} \label{lemma6.1}
+        Пусть $p$ - простое число, $r\geq 2$ и пусть целые числа $a_1,\dots, a_r$ попарно взаимно просты, причем $p \div a_1\dots a_r$. Тогда найдется номер $1\leq s\leq r$ такой, что $p\div a_s$.
+    \end{lemma} 
+    \begin{proof}
+        Индукция по $r$. Если $r=2$, то  теоремы \ref{th2.3} следует, что утверждение верно. Пусть $m\geq 3$ и утверждение доказано для всех $r\leq m-1$. Пусть $a_1,\dots a_m$ попарно взаимно просты и $p \div a_1\cdot...\cdot a_m$. Полагая $a=a_1\cdot ... \cdot a_{m-1}$ будем иметь: $p \div aa_m$. Если $(p,a)=1$, то $p\div a_m$ по теореме \ref{th2.3}. Пусть $(p,a)>1$. Так как $p$ - простое, то $(p,a)=p$ и $p$ делит некоторый сомножитель $a_{s}:\\ 1 \leq s \leq m-1$.
+    \end{proof} 
+    \begin{lemma} \label{lemma6.2}
+        Пусть $b\div a$ и $c\div a$, причем $(b,c)=1$. Тогда $bc\div a$.
+    \end{lemma}
+    \begin{proof}
+        Из условия следует, что $a$ - общее кратное $b$ и $c$. По теореме \ref{th2.1} $a$ делится на $[b,c]$, по теореме \ref{th2.2} $[b,c]=bc$.
+    \end{proof}
+    \begin{consequense}
+        Пусть $r\geq 2$, и пусть целые числа $b_1\dots b_r$ попарно взаимно просты, причем $b_1 \div a, \dots, b_r \div a$. Тогда $b_1\dots b_r \div a$.
+    \end{consequense} 
+    \begin{proof}
+        Индукция по $r$. Если $r=2$, получаем утверждение леммы. Пусть $m\geq 3$ и утверждение доказано для всех $r\leq m-1$. Пусть $b_1, \dots b_m$ попарно взаимно просты и каждое из них делит $a$. В силу предложения индукции, $a$ делится на произведение $b = b_1\dots b_{m-1}$. Заметим, что $(b,b_m)=1$. Действительно, в противном случае найдется простое число $p$, делящееся как на $b_m$, так и на $b$. По лемме \ref{lemma6.1} $p$ будет делить и некоторые $b_{\xi}: 1\geq \xi \geq m-1$. Следовательно $(b_m,b_{\xi})\geq p>1$, что противоречит условию. Так как $a$ делится на $b$ и $b_m$, и $(b, b_m)=1$, то в силу леммы \ref{lemma6.2} $a$ делится на $bb_m=b_1\dots b_m$.
+    \end{proof}
+    \begin{lemma} \label{lemma6.3}
+        Пусть числа $a$ и $b$ взаимно просты, и пусть $d_1$ и $d_2$ пробегают соответственно множества всех делителей $a$ и $b$. Тогда величина $d=d_1d_2$ пробегает без повторений всё множество делителей числа $ab$.
+    \end{lemma} 
+    \begin{proof} \tab
+        \begin{enumerate}
+            \item Если $d_1 \div a,$ $d_2 \div b$, то $a=kd_1,$ $b=md_2$ при некоторых $k,m\in \Z$, так что $ab=kmd_1d_2$, то есть $d_1d_2$ - делитель $ab$.
+            \item Допустим, что $d_1d_2=\delta_1\delta_2$ для некоторых чисел $d_1, \delta_1$ делящих $a$, и некоторых чисел $d_2, \delta_2$, делящих $b$. Очевидно, что $(d_1,\delta_2)=1$, так как в противном случае нашлось бы простое $p$, делящееся и на $a$, и на $b$, что невозможно. Но $d_1 \div \delta_1\delta_2 \Rightarrow$ (по теореме \ref{th2.3}) $d_1 \div \delta_1$ и, следовательно $d_1\leq \delta_1$. Аналогично доказывается, что $\delta_1\div d_1$ и $\delta_1\leq d_1$. Значит $d_1=\delta_1, d_2=\delta_2$, то есть все произведения $d_1$ и $d_2$ различны.
+            \item Докажем, наконец, что всякий делитель $d$ числа $ab$ встретится среди произведений $d_1d_2$. Если $d=1$, то это очевидно. Пусть $d\geq 2$ и $p_1^{\alpha_1}\dots p_r^{\alpha_r}$ - каноническое разложение $d$. Число $q_1=p_1^{\alpha_1} \div ab$. Из теоремы \ref{th2.3} следует, что $q_1$ делит либо $a$, либо $b$ (но не оба сразу). То же верно и для чисел $q_{\xi}=p_{\xi}^{\alpha_{\xi}}, \xi=2,3,\dots,r$. Пусть, для определенности, $q_1,\dots, q_t$ - все сомножители, делящие $a$, и $q_{t+1},\dots, q_r$ - все сомножители, делящие $b$. По следствию леммы \ref{lemma6.2} произведение $d_1=q_1\dots q_t$ делит $a$, произведение $d_2=q_{t+1},\dots, q_r$ делит $b$, но $d_1d_2=d$.
+        \end{enumerate}
+    \end{proof}
+    \begin{theorem} \label{th6.2}
+        Пусть функция $f$ мультипликативна. Тогда функция $F$, определенная при любом $n\in \N$ равенством:
+        $$F(n)=\sum\limits_{d\div n}f(d)$$
+        мультипликативна.
+    \end{theorem}
+    \begin{proof}
+        Пусть $(a,b)=1$. По лемме \ref{lemma6.3}, все делители $ab$ получим без повторений, рассмотрев все произведения $d=d_1d_2$, где $d_1 \div a$, $d_2 \div b$. Значит
+        \begin{multline*}
+        F(ab)=\sum\limits_{d\div ab}f(d)=\sum\limits_{d_1 \div a}\sum\limits_{d_2 \div b}f(d_1d_2)=\sum\limits_{d_1 \div a}\sum\limits_{d_2 \div b}f(d_1)f(d_2)=\\
+        =(\sum\limits_{d_1 \div a}f(d_1))(\sum\limits_{d_2 \div b}f(d_2))=F(a)F(b).
+        \end{multline*}
+        Взаимная простота $d_1$ и $d_2$ очевидна.
+    \end{proof} 
+    \begin{consequense}
+        Если $p_1^{\alpha_1}\dots p_r^{\alpha_r}$ - каноническое разложение $n$, а $F$ - функция из условия теоремы, то
+        $$F(n)=\prod\limits_{i=1}^{r}(1+f(p_i)+f(p_i^2)+\dots +f(p_i^{\alpha_i}))$$
+        (при условии что $f\not\equiv 0$).
+    \end{consequense}
+    \begin{definition}
+        Функция Мебиуса $\mu(n)$ определяется равенствами:
+        \[\mu(n)=\begin{cases}
+            1, \hspace{5pt} \text{если} \hspace{5pt} n=1,\\
+            0, \hspace{5pt} \text{если} \hspace{5pt} n \hspace{5pt} \text{делится на квадрат простого числа},\\
+            (-1)^k,\hspace{5pt} \text{если} \hspace{5pt} n=p_1\dots p_k - \text{различные простые числа}.
+        \end{cases}\]
+    \end{definition} 
+    \begin{examples}\tab
+        \begin{enumerate}
+            \item $\mu(2)=(-1)^1=-1,\ \mu(3)=-1,\ \mu(4)=0,\ \mu(5)=-1,\ \mu(6)=(-1)^2=1,\\
+            \mu(7)=-1,\ \mu(8)=\mu(9)=0,\ \mu(10)=(-1)^2=1$.
+            \item $\mu(n)$ - мультипликативна: если $n=p_1\dots p_k$,\ $m=q_1\dots q_r$,\ $(m,n)=1\\
+            \Rightarrow mn=p_1\dots p_kq_1\dots q_r \Rightarrow \mu(mn)=(-1)^{k+r}=(-1)^k(-1)^r=\mu(m)\mu(n)$.
+            \item $p$ - простое $\Rightarrow \mu(p)=-1,\ \mu(p^2)=0,\ \mu(p^3)=0,\ \dots$
+        \end{enumerate}
+    \end{examples}
+    \begin{theorem}
+        (Основное свойство функции Мебиуса) \label{th6.3}
+        \[\sum\limits_{d\div n}\mu(d)=\begin{cases}
+            1, \hspace{5pt} \text{если} \hspace{5pt} n=1,\\
+            0, \hspace{5pt} \text{во всех остальных случаях}.
+        \end{cases}\]
+    \end{theorem} 
+    \begin{proof}
+        Пусть $F(n)=\sum\limits_{d\div n}\mu(d)\Rightarrow$ (По теореме \ref{th6.2}) $F$ - мультипликативна. Пусть $p$ - простое, $n=p^{\alpha}, \alpha\geq 1 \Rightarrow F(p^{\alpha})=\sum\limits_{d\div p^{\alpha}}\mu(d)=\mu(1)+\mu(p)+\mu(p^2)+\dots +\mu(p^{\alpha})=1-1=0$.
+    \end{proof}
+    \begin{definition}
+        Функция Эйлера определена для натурального $n$, как количество чисел $m$ с такими условиями: $1\leq m\leq n$ и $(m,n)=1$. Функция Эйлера обозначается $\phi(n)$.
+    \end{definition}
+    \begin{examples}
+        $\phi(1)=1$,\ $\phi(2)=1$,\ $\phi(3)=1+1+0=2$,\ $\phi(4)=1+0+1+0=2$,\ $\phi(5)=1+1+1+1+0=4$,\ $\phi(6)=1+0+0+0+1+0=2$.
+    \end{examples}
+    \begin{theorem}
+        Функция Эйлера мультипликативна. Кроме того, если $p_1,\dots,p_k$ - все различные делители $n$, тогда:
+        \[\phi(n)=n\prod\limits_{p\div n}(1-\frac{1}{p})=n(1-\frac{1}{p_1})\dots(1-\frac{1}{p_k})\]
+    \end{theorem} 
+    \begin{proof}
+        Надо подсчитать число тех $m$, для которых $(m,n)=1$. По теореме \ref{th6.3}
+        \[\sum\limits_{d\div (m,n)}\mu(d)=\begin{cases}
+            1, \hspace{5pt} \text{если} \hspace{5pt} (m,n)=1,\\
+            0, \hspace{5pt} \text{иначе}.
+        \end{cases}\]
+        \[\Rightarrow \phi(n)=\sum\limits_{1\leq m\leq n}\ \sum\limits_{d\div (m,n)}\mu(d)=\sum_{d\div n}\mu(d)\sum\limits_{d\leq m\leq n, d\div m}1\]
+        \[1\leq m=kd\leq n \Rightarrow 1\leq k\leq \frac{n}{d}\]
+        \[\Rightarrow \sum_{d\div n}\mu(d)\sum\limits_{d\leq m\leq n, d\div m}1 =\sum\limits_{d\div n}\mu(d)\frac{n}{d}=n\sum\limits_{d\div n}\frac{\mu(d)}{d}\] Функции $\mu(d)$ и $\frac{1}{d}$ - мультипликативные $\Rightarrow \frac{\mu(d)}{d}$ - мультипликативна $\Rightarrow$ по теореме \ref{th6.2} $\Rightarrow \sum\limits_{d\div n}\frac{\mu(d)}{d}$ - мультипликативна $\Rightarrow \phi(n)$ - мультипликативна.\\
+        $n=p^{\alpha},\ p$ - простое, $\alpha\geq 1$
+        \begin{multline*}
+            \Rightarrow \phi(p^{\alpha})=p^{\alpha}\sum\limits_{d \div p^{\alpha}}\frac{\mu(d)}{d}=p^{\alpha}(\frac{\mu(1)}{1}+\frac{\mu(p)}{p}+\frac{\mu(p^2)}{p^2}+\dots+\frac{\mu(p^{\alpha})}{p^{\alpha}})=\\
+            =p^{\alpha}(1+\frac{\mu(p)}{p})=p^{\alpha}(1+\frac{1}{p})
+        \end{multline*}.
+        \begin{multline*}
+            n=p_1^{\alpha_1}\dots p_k^{\alpha_k}\Rightarrow \phi(n)=\phi(p_1^{\alpha_1})\dots \phi(p_k^{\alpha_k})=p_1^{\alpha_1}(1-\frac{1}{p_1})\dots p_k^{\alpha_k}(1-\frac{1}{p_k})=\\
+            =p_1^{\alpha_1}\dots p_k^{\alpha_k}(1-\frac{1}{p_1})\dots (1-\frac{1}{p_k})=n\prod\limits_{p\div n}(1-\frac{1}{p}).
+        \end{multline*}
+    \end{proof}
+    \begin{theorem}(Формула обращения Мебиуса)\label{th6.5}\\
+        Пусть $\forall n\geq 1$ функции $f$ и $g$ связаны соотношением
+        \begin{equation}
+            f(n)=\sum\limits_{d\div n}g(d)
+        \end{equation}
+        Тогда $\forall n\geq 1$ выполнено равенство
+        \begin{equation}
+            g(n)=\sum\limits_{d\div n}\mu(d)f(\frac{n}{d})
+        \end{equation}
+        Обратно, если $\forall n\geq 1$ $f$ и $g$ связаны соотношением $(2)$, то $\forall n\geq 1$ верно $(1)$. 
+    \end{theorem} 
+    \begin{proof}
+        \begin{itemize}
+            \item[$(\Rightarrow)$] Пусть выполнено $(1)$, преобразуем величину
+            \begin{multline*}
+                \sum\limits_{d\div n}\mu(d)f(\frac{n}{d})=\sum\limits_{d\div n}\mu(d)\sum\limits_{\delta\div \frac{n}{d}}g(\delta)=\sum\limits_{d\div n}\sum\limits_{\delta\div \frac{n}{d}}\mu(d)g(\delta)=\sum\limits_{\delta\div n}\sum\limits_{d\div \frac{n}{\delta}}\mu(d)g(\delta)=\\
+                =\sum\limits_{\delta\div n}g(\delta)\sum\limits_{d\div \frac{n}{\delta}}\mu(d)=g(n)\ (\text{по теореме } \ref{th6.3}).
+            \end{multline*}
+            Пояснение: 
+            \[\sum\limits_{d\div \frac{n}{\delta}}\mu(d)=\ \begin{cases}
+                1,\ \text{если}\ \frac{n}{\delta}=1,\\
+                0,\ \text{если}\ \frac{n}{\delta}>1.
+            \end{cases}=\ \ \ \begin{cases}
+                1,\ \text{если}\ n=\delta,\\
+                0,\ \text{если}\ n>\delta.
+            \end{cases}\]
+            \item[$(\Leftarrow)$] Пусть есть (2), преобразуем
+            \[\sum\limits_{d\div n}\mu(d)f(\frac{n}{d})=\sum\limits_{d\div n}\sum\limits_{\delta\div d}\mu(\delta)f(\frac{d}{\delta})=\]
+                \[(\delta\div d \Rightarrow d=\Delta\delta\Rightarrow \frac{d}{\delta}=\Delta)\]
+            \[=\sum\limits_{\Delta\delta\div d}\mu(\delta)f(\Delta)=\sum\limits_{\Delta\div n}f(\Delta)\sum\limits_{\delta\div \frac{n}{\Delta}}\mu(\delta)=\text{(по теореме}\hspace{3pt} \ref{th6.3}) \hspace{3pt} f(n)\]
+        \end{itemize}
+    \end{proof} 
+    \begin{consequense}
+        \[\sum\limits_{d\div n}\phi(n)=n\]
+    \end{consequense}
+    \begin{proof}
+        Выше доказали, что
+        \[\phi(n)=\sum\limits_{d\div n}\mu(d)\frac{n}{d}\]
+        это равенство (2), где $g(n)=\phi(n), f(k)=k$. По формуле обращения Мебиуса, для этих функций выполнено (1):
+        \[f(n)=n=\sum\limits_{d\div n}g(n)=\sum\limits_{d\div n}\phi(n)\]
+    \end{proof} 
+    \begin{definition}
+        Функция $\tau(n)$ определяется, как число делителей натурального $n\geq 1$.
+        \[\tau(n)=\sum\limits_{d\div n}1.\]
+    \end{definition}
+    \begin{comm}
+        $f(1)\equiv 1$ - мультипликативна $\Rightarrow$ (по теореме \ref{th6.2}) $\tau(n)$ - мультипликативна.
+    \end{comm} 
+    \begin{statement}
+        $n=p^{\alpha}, \ p$ - простое.
+        \[\tau(p^{\alpha})=\sum\limits_{d\div p^{\alpha}}1=\alpha+1\]
+        \[n=p_1^{\alpha_1}\dots p_k^{\alpha_k}\Rightarrow \tau(n)=(\alpha_1+1)(\alpha_2+1)\dots(\alpha_k+1)\].
+    \end{statement}
+    \begin{definition}
+        $\sigma(n)$ - сумма делителей числа $n\geq 1$
+        \[\sigma(n)=\sum\limits_{d\div n}d\]
+    \end{definition} 
+    \begin{examples}
+        $\sigma(6)=1+2+3+6=12$, $p$ - простое $\Rightarrow \sigma(p)=p+1$.
+    \end{examples}
+    Из теоремы \ref{th6.2} следует мультипликативность $\sigma(n)$.\\
+    $n=p^{\alpha} \Rightarrow \sigma = 1+p+p^2+\dots p^{\alpha}=\frac{p^{\alpha+1}-1}{p-1}$.\\
+    Если $n=p_1^{\alpha_1}\dots p_k^{\alpha_k} \Rightarrow \sigma(n)=\sigma(p_1^{\alpha_1})\dots \sigma(p_k^{\alpha_k})=\prod\limits_{s=1}^r\frac{p_1^{\alpha_s+1}-1}{p_s-1}=\prod\limits_{p^{\alpha} \div\div n}\frac{p^{\alpha+1}-1}{p-1}$
+    \begin{comm}
+        Функции $\tau(n)$ и $\sigma(n)$ - частный случай функции $\sigma_{\beta}(n)$, $\beta$ - любое вещественное число
+        \[\sigma_{\beta}(n)\sum\limits_{d\div n}1=\tau(n),\ \sigma_1(n)=\sigma(n)\]
+    \end{comm}
+    Упражнение: Доказать, что $\sigma(n)+\phi(n)=n\tau(n)$ имеет место $\lra n$ - простое.
+    \begin{definition}
+        Делитель $d$ числа $n$ называется собственным, если $d<n$.
+    \end{definition} 
+    \begin{definition}
+        Число $n$ называется совершенным, если оно равно сумме своих собственных делителей: $n=\sigma(n)-n\lra \sigma(n)=2n$
+    \end{definition}
+    \begin{examples}
+        $\sigma(6)=12=6\cdot 2,\ \sigma(28)=56=2\cdot 28$.
+    \end{examples}
+    \begin{theorem} (Эйлер)\\
+        Четное число является совершенным $\lra$ когда оно имеет вид $2^{p-1}(2^p-1)$, где $p$ и $2^p-1$ - простые числа.
+    \end{theorem} 
+    Простые числа вида $M_p=2^p-1$, где $p$ - простое, называются простыми Мерсена. Сейчас известно 51 простое число Мерсена. Самое большое из них отвечает простому $p=82589933$. В записи $M_p$ - 24862048 цифр. (результат получен 21.12.2018). Неизвестно, конечно или нет множество простых Мерсена. Гипотеза: если $\pi_M(x)$ - число простых Мерсена не превосходящих $x$, то\\
+    $\pi_M(x)\thickapprox \ln\ln x$.\\
+    Неизвестно, существуют или нет нечетные совершенные числа. Если $N$ - нечетное совершенное число, то
+    \begin{itemize}
+        \item[(1)] $N>10^{1500}$ (2012г.)
+        \item[(2)] Наибольший простой делитель $N$ превосходит $10^8$ (2008г.)
+        \item[(3)] Второй по величине простой делитель $N$ превосходит $10^4$ (1999г.)
+        \item[(4)] Пусть $k\geq 1$. Тогда имеется не более чем $2^{4^k}$ несчетных совершенных чисел, имеющих ровно $k$ различных простых делителей. (2003г.)  
+    \end{itemize}
+    \begin{definition}
+        Числа $a$ и $b\ (1<a<b)$ называются дружественными, если $(a)$ $a$ есть сумма собственных делителей $b$, $(b)$ число $b$ - сумма собственных делителей $a$:
+         $\ \begin{cases}
+            \sigma(b)-b=a,\\
+            \sigma(a)-a=b.
+         \end{cases} \lra\ \ \ \sigma(a)=\sigma(b)=a+b$.   
+    \end{definition}
+    \begin{examples}
+        (ЕЩЕ НЕ ГОТОВО)
+    \end{examples}
+    Неизвестно, конечно или нет множество дружественных пар чисел. Сейчас извество $1229319267$ таких пар.
+    Пусть $A(x)$ - число дружественных пар с $a\leq x$. $\frac{A(X)}{x}\to 0$ при $x\to \infty$ (П. Эрдеш 1955г.)
+\newpage

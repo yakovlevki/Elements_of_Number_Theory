@@ -1,0 +1,157 @@
+\section{Сравнения с одним неизвестным}
+    Пусть $f(x)=a_nx^n+\dots+a_1x+a_0$ - многочлен с целыми коэффициэнтами. Будем изучать сравнения вида $(1)\ f(x)\equiv 0\pmod{m}$. Если $a_n\not\equiv 0\pmod{m}$, то число $m$ называется степенью сравнения. Решить сравнение (1) - значит найти все целые числа $x$, ему удовлетворяющие. По следствию 2 из \ref{th8.1},\ $a\equiv b\pmod{m}\Rightarrow f(a)\equiv f(b)\pmod{m}$. Значит, если (1) удовлетворяет некоторое число $x$, и $x\equiv a\pmod{m}$, то (1) удовлетворяют все числа сравнимые с $a$ по модулю $m$. По этой причине весь класс вычетов $a \pmod{m}$ удобно считать за одно решение.
+    \subsection*{Сравнения первой степени}
+    Всякое сравнение первой степени можно переписать в виде: $ax\equiv b\pmod{m}$. Рассмотрим сперва случай, когда $(a,m)=1$. По теореме \ref{th8.4} получаем, что такое сравнение имеет единственное решение.
+    \begin{enumerate}
+        \item Способ 1. По теореме Эйлера получим $x_0\equiv ba^{\phi(m)-1}\pmod{m}$.\\
+        Тогда $ax_0\equiv aba^{\phi(m)-1}\equiv ba^{\phi(m)}\pmod{m}\equiv b\cdot 1 \pmod{m}\equiv b\pmod{m}$.
+        \item Способ 2. (Разложение в непрерывную дробь)
+        $\alpha=\frac{m}{a}$ подходящие дроби: $\delta_0,\delta_1,\dots,\delta_{s-1}=\frac{P_{s-1}}{Q_{s-1}}, \delta_s=\frac{P_s}{Q_s}=\frac{m}{a}$. Известно по лемме \ref{lemma7.1} $P_s Q_{s-1}-P_{s-1}Q_s=(-1)^{s-1}\Rightarrow mQ_{s-1}-aP_{s-1}=(-1)^{s-1}$. $aP_{s-1}=(-1)^s+mQ_{s-1}\Rightarrow a(-1)^s P_{s-1}=1+mQ_{s-1}(-1)^s\Rightarrow a(-1)^sP_{s-1}b=b+mbQ_{s-1}(-1)^s$. Переходя к сравнению по модулю $m$, получим: $a(-1)^s P_{s-1}b\equiv b \pmod{m}\Rightarrow (-1)^sP_{s-1}b\pmod{m}$ - решение.
+    \end{enumerate}
+    \begin{example}
+        \[\frac{13}{7}=1+\frac{6}{7}=1+\cfrac{1}{\cfrac{7}{6}}=1+\cfrac{1}{1+\cfrac{1}{6}}\]
+        Значит $x\equiv (-1)^2\cdot 2\cdot 3 \pmod{13}\equiv 6\pmod{13}$.
+    \end{example}
+    Пусть $(a,m)=d>1,\ ax\equiv b\pmod{m}$. Необходимое условие разрешимости - делимость $b$ на $d$.
+    (т.к. если сравнение разрешимо, то $ax=b+km$ для некоторого целого $k$). Покажем что это условие достаточное. Пусть $a=a_1d,\ b=b_1d,\ m=m_1d,\ (a_1,m_1)=1$. Значит $a_1dx\equiv b_1d\pmod{m_1d}$. По теореме \ref{th8.2}, можно все сократить на $d: a_1x\equiv b_1\pmod{m_1}$. По доказаному выше, это сравнение имеет единственное решение по модулю $m_1$: $x\equiv x_1\pmod{m_1}$. Все числа вида (2)\ $x_1, x_1\pm m_1, x_1\pm 2m_1, \dots, x_1\pm tm_1,\dots$ - решения исходного сравнения. Так как $x_1$ - решение, то $a_1x_1=b_1+km_1, k$ - некоторое целое число $\Rightarrow a(x_1\pm tm_1)=ax_1\pm tam_1=\alpha a_1 x_1 \pm t a_1 \alpha m_1 \equiv \alpha a_1 m_1 \pmod{m}\equiv \alpha(b_1+km_1)\pmod{m}\equiv b+km \pmod{m}\equiv b\pmod{m} \Rightarrow$ из ряда (2) нужно отобрать числа, различные по модулю $m$. $x_1,x_1+m_1,x_1+2m_1,\dots,x_1+(\alpha-1)m_1$ все они различны по модулю m.
+    \begin{theorem}\label{th9.1}
+        Пусть $m\geq 2, a,b$ - целые числа, причем $(a,m)=d$. Сравнение $ax\equiv b \pmod{m}$ разрешимо $\Leftrightarrow d\div b$. В случае разрешимости сравнение имеет $d$ решений.
+    \end{theorem} 
+    \begin{example}
+        ПРИМЕР 9.2    
+    \end{example}
+    \subsection*{Китайская теорема об остатках}
+    Рассмотрим систему линейных сравнений, где $m_1,\dots, m_k$ - попарно взаимно простые:
+    \begin{equation}
+        \begin{cases} \label{eq5}
+            x\equiv a_1 \pmod{m_1},\\
+            x\equiv a_2 \pmod{m_2},\\
+            \tab[1.8cm] \vdots\\
+            x\equiv a_k \pmod{m_k}.
+        \end{cases}
+    \end{equation}
+    \begin{theorem}\label{th9.2}
+        Пусть $M=m_1 \dots m_K$, а числа $M_s, N_s,\ s=1, \dots k$ определены соотношением: $M=m_s M_s,\ M_s N_s\equiv 1 \pmod{m_s}$. Пусть $x_0=M_1 N_1 a_1+ \dots + M_k N_k a_k$. Тогда решение системы \eqref{eq5} имеет вид: $x\equiv x_0 \pmod{M}$.
+    \end{theorem} 
+    \begin{proof}\tab
+        \begin{itemize}
+            \item[$(\Rightarrow)$] Пусть $x\equiv x_0 \pmod{M}\equiv x_0\pmod{m_1, \dots, m_k} \Rightarrow$ по теореме \ref{th8.3}\\
+            $x\equiv x_0 \pmod{m_1},\ M_2=m_1 m_3 \dots m_k, M_3=m_1 m_2 m_4, \dots, m_k$ и так далее $\Rightarrow$ все числа $M_2, M_3, \dots, M_k$ кратны $m_1 \Rightarrow x\equiv M_1 N_1 a_1 \pmod{m_1}\equiv\\ \equiv 1\cdot a_1 \pmod{m_1}\equiv a_1 \pmod{m_1}$. Аналогично проверяется, что \\
+            $x\equiv a_s \pmod{m_s},\ s=2, \dots, k$.
+            \item[$(\Leftarrow)$] Пусть $x$ - решение \eqref{eq5}, $y=x-x_0 \Rightarrow y\equiv a_1-a_1 \pmod{m_1}\equiv 0\pmod{m_1}$. Аналогично проверяется, что $y$ кратно и $m_2, \dots, m_k \Rightarrow y$ - общее кратное чисел $m_1, \dots, m_k \Rightarrow$ по теореме \ref{th2.1} $y$ делится на НОК$(m_1, \dots, m_k)=\\=m_1 \dots m_k=M \Rightarrow$ по теореме \ref{th2.2} $y\equiv x-x_0\equiv 0\pmod{M}$.
+        \end{itemize}
+    \end{proof} 
+    \begin{example}
+        $x\equiv 1\pmod{2},\ x\equiv 2\pmod{3},\ x\equiv 4\pmod{5}$.\\
+        Тогда $m_1=2,\ m_2=3,\ m_3=5 \Rightarrow M=30,\ M_1=15,\ M_2=10,\ M_3=6\\
+        \Rightarrow 15N_1 \equiv 1\pmod{2} \Leftrightarrow N_1\equiv 1\pmod{2} \Rightarrow N_1=1.\\
+        \Rightarrow 10N_2\equiv 1 \pmod{3} \Leftrightarrow N_2 \equiv 1\pmod{3} \Rightarrow N_2=1,\\
+        \Rightarrow 6N_3\equiv 1\pmod{5} \Leftrightarrow N_3\equiv 1\pmod{5} \Rightarrow N_3=1$.\\
+        Тогда $x_0=15\cdot 1 \cdot 1+10\cdot 1\cdot 2+6\cdot 1\cdot 4 \pmod{30}\equiv 15+20+24\equiv 29\pmod{30}$.
+    \end{example}
+    \begin{theorem} \label{th9.3}
+        Пусть $f(x)$ - произвольная целозначная функция, $m>2$ - целое, причем $m=kn$, где $k,n>1,\ (k,n)=1$. Пусть далее
+        \[\begin{cases}
+            x\equiv a_1\pmod{k},\\
+            \tab[1.5cm]\vdots\\
+            x\equiv a_r \pmod{k}.  
+        \end{cases}\] 
+        - все решения сравнения $f(x)\equiv 0\pmod{k}$
+        \[\begin{cases}
+            x\equiv b_1\pmod{n},\\
+            \tab[1.5cm]\vdots\\
+            x\equiv b_s \pmod{n}.  
+        \end{cases}\] 
+        - все решения сравнения $f(x)\equiv 0\pmod{n}$. Тогда все решения сравнения\\
+        $f(x)\equiv 0\pmod{m}$ задаются следующими формулами:\\
+        $(\ast)\ x\equiv a_i nn^*+b_j k k^* \pmod{m}$, где  $1\leq i\leq r,\ 1\leq j\leq s,\\
+        nn^*\equiv 1\pmod{k},\ k k^*\equiv 1\pmod{n}$.
+    \end{theorem} 
+    \begin{proof}\tab
+        \begin{itemize}
+            \item[$(\Rightarrow)$] $(\ast)$ - дает решения: фиксируем $i$ и $j\\
+            \Rightarrow x\equiv a_i n n^* \pmod{k}\equiv a_i\cdot 1\pmod{k}\equiv a_i\pmod{k}\Rightarrow f(x)\equiv 0\pmod{k},\\
+            x\equiv b_j k k^*\pmod{n}\equiv b_j\cdot 1\pmod{n}\equiv b_j\pmod{n}\Rightarrow f(x)\equiv0\pmod{n}\\
+            \Rightarrow$ по теореме \ref{th2.2} $f(x)\equiv 0\pmod{kn}\equiv 0\pmod{m}$.
+            \item[$(\Leftarrow)$] Обратное очевидно. Надо заметить: все $x\pmod{m}$ в $(\ast)$ различны. Если $a_i n n^*+b_j k k^*\equiv a_i^{\prime}nn^*+b_j^{\prime} k k^* \pmod{m} \Rightarrow a_i n n^*\equiv a_i^{\prime} \pmod{k}\\
+            \Rightarrow a_i\equiv a_i^{\prime},\ b^i\equiv b_i^{\prime} \pmod{m}$.
+        \end{itemize}
+    \end{proof} 
+    \begin{consequense}
+        В условиях теоремы \ref{th9.3}. Решение сравнения\\
+        $f(x)\equiv 0\pmod{m},\ m=p_1^{\alpha_1}\dots p_k^{\alpha_k}$ сводится к отысканию всех решений каждого из сравнений $f(x)\equiv 0\pmod{p_i^{\alpha_i}}, 1\leq i\leq t\ (\diamondsuit)$.\\
+        Если $\nu(p_i^{\alpha_i})$ - число решений $(\diamondsuit)$, то число $\nu(m)$ решений исходного сравнения равно произведению $\nu(p_1^{\alpha_1})\dots \nu(p_t^{\alpha_t})$
+    \end{consequense} 
+    \subsection*{Полиномиальные сравнения}
+    Пусть $m\geq 2,\ n\geq 2$ - целые числа, $f(x)=a_n x^n+\dots+a_1 x+a_0$ - полином с целыми коэффициэнтами, причем $a_n\not\equiv 0\pmod{m}$. Если $m=p_1^{\alpha_1}\dots p_t^{\alpha^t}$ - каноническое разложение, то по следствию теоремы \ref{th9.1} решение сравнения\\
+    $f(x)\equiv 0\pmod{m}$ сводится к решению каждого из сравнений $f(x)\equiv 0\pmod{p_i^{\alpha_i}}$, то есть достаточно рассмотреть случай, когда $m=p^{\alpha},\ p$ - простое, $\alpha\geq 1$. Вначале рассмотрим случай $\alpha=1$, то есть случай простого модуля: $m=p$.
+    \begin{theorem}\label{th9.4}
+        Сравнение $f(x)\equiv 0\pmod{p}$ равносильно сравнению степени не выше $p-1$.
+    \end{theorem} 
+    \begin{proof}
+        Пусть $n\geq p$, поделим $f(x)$ с остатком на $x^p-x\\
+        \Rightarrow f(x)=(x^p-x)h(x)+g(x)$, где $g(x)$ - полином степени $\leq p-1$ с целыми коэффициэнтами $\Rightarrow (x^p-x)h(x)+g(x)\equiv 0\pmod{p} \Rightarrow$ по малой теореме Ферма (следствие теоремы \ref{th8.6})\ $x^p-x\equiv 0 \pmod{p}$ при любом $x \Rightarrow$ сравнение равносильно $g(x)\equiv 0\pmod{p}$.
+    \end{proof} 
+    \begin{theorem} (Теорема Лагранжа) \label{th9.5}
+        Пусть $2\leq n\leq p-1,\ p$ - простое. Если сравнение $f(x)=a_n x^n+\dots+a_1 x+a_0\equiv 0\pmod{p}$ имеет более чем $n$ решений, то все коэффициэнты $f(x)$ делятся на $p$.
+    \end{theorem} 
+    \begin{proof}
+        Пусть имеется $(n+1)$ класс вычетов по модулю $p$, удовлетворяющий сравнению, пусть $x_1,\dots,x_{n+1}$ - произвольные представители этих классов: $f(x_i)=pN_i,\ N_i$ - целое. Тогда 
+        \[\begin{cases}
+            a_0+a_1 x_1+\dots+a_n x_1^n=pN_1,\\
+            a_0+a_2 x_2+\dots+a_n x_2^n=pN_2,\\
+            \tab[3cm]\vdots\\
+            a_0+x_{n+1} x_{n+1}+\dots+a_n x_{n+1}^n=p N_{n+1}.
+        \end{cases}\]
+        Рассмотрим это как систему линейных уравнений с неизвестными $a_0,\dots, a_n\\
+        \Rightarrow$ по формулам Крамера $a_k=\frac{\Delta_k}{\Delta}$
+        \[\Delta=\begin{vmatrix}
+            1 & x_1 & x_1^2 & \dots & x_1^n\\
+            1 & x_2 & x_2^2 & \dots & x_2^n\\
+            \vdots & \vdots & \vdots & \null & \vdots\\
+            1 & x_{n+1} & x_{n+1}^2 & \dots & x_{n+1}^n
+        \end{vmatrix} = \prod\limits_{1\leq j < i\leq n+1}(x_i-x_j)\]
+        Ни одна из разностей $x_j-x_i$ не делится на $p \Rightarrow \Delta$ не делится на $p$. $\Delta_k$ получается из $\Delta$ заменой $k$-го столбца на столбец, которой состоит из $pN_1,pN_2,\dots,pN_{n+1}\\
+        \Rightarrow p\div \Delta_k \Rightarrow p\div a_k,\ \forall k$.
+    \end{proof} 
+    \begin{theorem}(Теорема Вильсона)\label{th9.6} \\
+        Для любого простого $p$ выполнено: $(p-1)!+1\equiv 0\pmod{p}$
+    \end{theorem} 
+    \begin{proof}
+        Если $p=2$, то очевидно. Пусть $p\geq 3$. Рассмотрим\\
+        $f(x)=(x-1)(x-2)\dots (x-(p-1))-(x^{p-1}-1)$. Степень $f(x)$ не выше чем $(p-2)$. Но всякий вычет $x\equiv a\pmod{p},\ a=1,\dots, p-1$ является решением сравнения $f(x)\equiv 0 \pmod{p} \Rightarrow$ по теореме Лагранжа (\ref{th9.5}) все коэффициэнты делятся на $p$. В частности, $(-1)^{p-1}(p-1)!+1\equiv 0\pmod{p}\\
+        \Rightarrow (p-1)!-1\equiv0\pmod{p}$.
+    \end{proof} 
+    (Упражнение) Верно и обратное $(n-1)!+1\equiv 0\pmod{n} \Rightarrow n$ - простое.\\
+    Значит теорему Вильсона можно рассматривать как критерий простоты числа.
+    \begin{definition}
+        Пусть $f(x)=a_n x^n+\dots+a_1 x+a_0$. Производной многочлена $f(x)$ назовем многочлен, который определяется формулой:\\
+        $f^{\prime}(x)=na_n x_{n-1}+(n-1)a_{n-1}x^{n-1}+\dots+2a_2x+a_1$. 
+    \end{definition} 
+    \begin{lemma}\label{lemma9.1}
+        Пусть $f(x)=a_nx^n+ \dots +a_1 x+a_0$ - многочлен с целыми коэффициэнтами, и пусть $\Delta$ - целое число. Тогда при любом $x$ справедливо равенство: $f(x+\Delta)-f(x)=\Delta\cdot a f^{\prime}(x)+\Delta^2g(x)$, где $g(x)$ - некоторый многочлен с целыми коэффициэнтами.
+    \end{lemma} 
+    \begin{proof}
+        \begin{multline*}
+            f(x+\Delta)-f(x)=\sum\limits_{k=0}^{n}a_k((x+\Delta)^k-x^k)=\\
+            =\sum\limits_{k=0}^{n}a_k(x^k+kx^{k-1}\Delta+C_k^2 x^{k-2}\Delta^2+ \dots + C_k^k \Delta^k-x^k)=\\
+            =\Delta \sum\limits_{k=1}^{n} k a_k x^{k-1}+\Delta^2 g(x)=\Delta f^{\prime}(x)+\Delta^2g(x)
+        \end{multline*}
+    \end{proof}
+    \subsection*{Процедура поднятия решений}
+    Пусть $x\equiv x_1 \pmod{p}$ - решение сравнения $f(x)\equiv 0\pmod{p}$. При некоторых условиях, это решение порождает решение по$\mod{p^2},\mod{p^3}, \dots$ ("поднимаются"\ до решений по соответствующим модулям). Условие, когда "поднятие"\ возможно: $f^{\prime}(x_1)\equiv 0\pmod{p}$. Покажем, что $x_1\pmod{p}$ породит решения $x_2\pmod{p^2}$, т.ч. $f(x_2)\equiv 0\pmod{p},\ x_2\equiv x_1\pmod{p}$. Ищем $x_2$ в виде $x_1+pt$. $f(x_2)\equiv 0\pmod{p^2} \Leftrightarrow f(x_1+pt)\equiv 0 \pmod{p^2} \Leftrightarrow$ (по лемме \ref{lemma9.1}) $f(x_1)+ptf(x_1)+p^2t^2g(x_1)\pmod{p^2}\equiv f(x_1)+pt f^{\prime}(x_1)\pmod{p^2}\ (1)$\\
+    $x_1$ - решение по$\mod{p} \Rightarrow f(x_1)=pn$. Тогда\\
+    $(1) \Leftrightarrow pn+pt f^{\prime}(x_1)\equiv 0\pmod{p} \Leftrightarrow p(n+t f^{\prime}(x_1))\equiv 0\pmod{p^2},\ t$ надо брать так: $n+t f^{\prime}(x_1)\equiv 0\pmod{p}$. Берем $t\equiv -n(f^{\prime}(x_1))^{\ast}\pmod{p}\\
+    \Rightarrow x_2\equiv x_1+pt_0 \pmod{p^2}$ - решение.
+    \begin{example}
+        $f(x)=x^3+x,\ f(x\equiv x^3+x\equiv 0 \pmod{5}),\ x_1\equiv 2\pmod{5}$ - одно из решений. $f^{\prime}(x)=3x^2+1,\\
+        f^{\prime}(x_1)\equiv 3\cdot 2^2+1\equiv 13\pmod{25}\equiv 3\pmod{5}\not\equiv 0\pmod{5}.\\
+        f(x_2)\equiv 0 \pmod{5^2},\ x_2\equiv x_1\pmod{5}$. Берем $x_2=2+5t,\ f(x_2)=f(2+5t)\equiv f(2)+5t f^{\prime}(2)\pmod{5^2}=10+5\cdot t\cdot 13\pmod{5^2}=5(2+13t)\pmod{5^2}\equiv 0\pmod{5^2},\ 2+13t\equiv 0\pmod{5}\ 2t+3\equiv 0\pmod{5}\ 3t\equiv -2\equiv 3\pmod{5},\ t\equiv 1\pmod{5}$. Берем $t=1,\ x_2\equiv 2+5\cdot 1\pmod{5^2}\equiv 7\pmod{5}$ - решение.\\
+        $f(x_2)=7^3+7=49\cdot 7+7=(50-1)7+7=350=5^2\cdot 14. f(x_3)\equiv 0\pmod{5^3},\\ x_3\equiv x_2\pmod{5^2},\ x_3=7+5^2t,\ f(x_3)\equiv f(7)+f^{\prime}(7)\cdot 5^2t\pmod{5^3}=\\=5^2\cdot 14+f^{\prime}(7)5^2t\equiv 0\pmod{5^3}\\
+        5^2(14+f^{\prime}(7)t)\equiv 0\pmod{5^3}\ 14+f^{\prime}(7)t\equiv 0\pmod{5}\ 2\equiv 7\pmod{5}\\
+        \Rightarrow f^{\prime}(2)\equiv f^{\prime}(7)\pmod{5}\ 4+3t\equiv 0\pmod{5}\ 3t\equiv 1\pmod{5},\ t\equiv 2\pmod{5},\\
+        t=2,\ x_3\equiv7+2\cdot 5^2\equiv 57\pmod{5^3}$.
+    \end{example}
+    \begin{comm}
+        Если $f(x_1)\equiv 0\pmod{p}$ и при этом $f^{\prime}(x_1)\equiv 0\pmod{p}$, то сравненмия $f(x)\equiv 0\pmod{p^{\alpha}},\ \alpha\geq 2$, может как иметь несколько решений $\equiv x_1\pmod{p}$, так и не иметь ни одного такого решения $f(x)=x^3+3x^2+x+3,\ p=5,\ f(x)\equiv 0\pmod{5}$ имеет решение $x\equiv 2\pmod{5},\ f^{\prime}(x)=3x^2+6x+1\equiv 3x^2+x+1 \Rightarrow f^{\prime}(2)\equiv 3\cdot 4+2+1\equiv 0\pmod{5}$. Можно проверить, что решениями сравнения $f(x)\equiv 0\pmod{5^2}$ будут все $x\equiv 2+5t\pmod{5^2},\ t=0,1,2,3,4.\ f(x)=x^3+2x^2+2x+1, p=3,\ f(x)\equiv 0\pmod{3}$ имеет решения $x\equiv 1\pmod{3},\ x\equiv 2\pmod{3},\ f^{\prime}(x)\equiv 0\pmod{3}$ для $x=1,2\pmod{3}$ сравнение $f(x)\equiv 0\pmod{3^2}$ не имеет решений $\equiv 1\pmod{3^2}$, но имеет решения $\equiv 2\pmod{3}$, а именно $x\equiv 8\pmod{3^2}$. 
+    \end{comm}
